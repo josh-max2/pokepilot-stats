@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pokepilot stats</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef2ef; --panel: #ffffff; --ink: #14201b; --muted: #5d6b64; --line: #d6ddd8;
+    --triangle: #d94f8a; --shiny: #c99700; --whos: #6f55a3; --royale: #e0552b; --other: #8a948f;
+    --up: #1f8a4c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101513; --panel: #18201c; --ink: #e5ece8; --muted: #93a19a; --line: #29332e;
+      --triangle: #f07aab; --shiny: #f2c537; --whos: #a58ad8; --royale: #ff7d55; --other: #7d8883; --up: #5fd08d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101513; --panel: #18201c; --ink: #e5ece8; --muted: #93a19a; --line: #29332e;
+    --triangle: #f07aab; --shiny: #f2c537; --whos: #a58ad8; --royale: #ff7d55; --other: #7d8883; --up: #5fd08d;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 400 16px/1.5 Rubik, system-ui, sans-serif;
+         font-variant-numeric: tabular-nums; padding: 32px 16px 64px; }
+  main { max-width: 920px; margin: 0 auto; }
+  a { color: inherit; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; margin-bottom: 28px; }
+  h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; }
+  .updated { color: var(--muted); font-size: 14px; }
+  .totals { display: flex; gap: 28px; margin-left: auto; }
+  .totals b { display: block; font-size: 26px; font-weight: 700; line-height: 1.1; }
+  .totals span { color: var(--muted); font-size: 13px; }
+  h2 { font-size: 15px; font-weight: 700; color: var(--muted); margin: 32px 0 12px; }
+  .formats { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 14px; }
+  .fmt { display: grid; grid-template-columns: 150px 1fr 250px; align-items: center; gap: 14px; }
+  .fmt-name { white-space: nowrap; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .bar { height: 14px; border-radius: 7px; background: var(--line); overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 7px; }
+  .fmt-num { text-align: right; font-size: 14px; color: var(--muted); }
+  .fmt-num b { color: var(--ink); font-size: 16px; }
+  .list { display: grid; gap: 10px; }
+  .vid { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--c, var(--other));
+         border-radius: 12px; padding: 14px 18px; display: grid; grid-template-columns: 1fr auto 120px; gap: 6px 22px; align-items: center; }
+  .vid > * { min-width: 0; }
+  .vid-title { font-weight: 700; text-decoration: none; }
+  .vid-title:hover { text-decoration: underline; }
+  .vid-sub { color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .vid-views { text-align: right; }
+  .vid-views b { font-size: 24px; font-weight: 800; display: block; line-height: 1.1; }
+  .vid-views span { font-size: 13px; color: var(--muted); }
+  .vid-views .gain { color: var(--up); }
+  .spark { width: 120px; height: 40px; }
+  .spark polyline { fill: none; stroke: var(--c, var(--other)); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  details { margin-top: 28px; }
+  summary { cursor: pointer; color: var(--muted); font-weight: 500; font-size: 15px; }
+  details .list { margin-top: 12px; }
+  .note { color: var(--muted); font-size: 13px; margin-top: 32px; }
+  .err { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  :focus-visible { outline: 3px solid var(--shiny); outline-offset: 2px; border-radius: 4px; }
+  @media (max-width: 640px) {
+    h1 { font-size: 28px; }
+    .totals { margin-left: 0; width: 100%; }
+    .fmt { grid-template-columns: 130px 1fr; }
+    .fmt-num { grid-column: 2; text-align: left; margin-top: -8px; }
+    .vid { grid-template-columns: 1fr auto; }
+    .spark-cell { grid-column: 1 / -1; }
+    .spark-cell:empty { display: none; }
+    .vid-sub { white-space: normal; }
+    .spark { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1 id="handle">@pokepilot2</h1>
+    <span class="updated" id="updated">loading…</span>
+    <div class="totals" id="totals"></div>
+  </header>
+
+  <h2>Average views per video, by format</h2>
+  <div class="formats" id="formats"></div>
+
+  <h2>Quiz videos</h2>
+  <div class="list" id="quiz"></div>
+
+  <details>
+    <summary id="older-summary">Earlier videos</summary>
+    <div class="list" id="older"></div>
+  </details>
+
+  <p class="note">Public numbers pulled hourly from TikTok with yt-dlp. Watch time and retention aren’t public, so check those in TikTok Studio. The green number is views gained in the last 24 hours.</p>
+</main>
+
+<script>
+const FORMATS = {
+  triangle: "triangle quiz", shiny: "guess the shiny", whos: "who’s that", royale: "royale", other: "other",
+};
+const fmtNum = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M"
+  : n >= 1e4 ? Math.round(n / 1e3) + "K" : n >= 1e3 ? (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K" : String(n);
+const ago = iso => {
+  const s = (Date.now() - new Date(iso)) / 1000;
+  if (s < 90) return "just now";
+  if (s < 3600) return Math.round(s / 60) + " min ago";
+  if (s < 86400 * 2) return Math.round(s / 3600) + " h ago";
+  return Math.round(s / 86400) + " days ago";
+};
+const el = (tag, attrs = {}, ...kids) => {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) k === "style" ? e.style.cssText = v : e.setAttribute(k, v);
+  for (const k of kids) e.append(k);
+  return e;
+};
+
+function parseCSV(text) {
+  const [head, ...rows] = text.trim().split(/\r?\n/);
+  const keys = head.split(",");
+  return rows.map(r => Object.fromEntries(r.split(",").map((v, i) => [keys[i], i ? (keys[i] === "id" ? v : +v) : v])));
+}
+
+function spark(points, color) {
+  if (points.length < 2) return "";
+  const t0 = points[0].t, t1 = points[points.length - 1].t, vmax = Math.max(...points.map(p => p.v)), vmin = points[0].v;
+  const xy = points.map(p => [((p.t - t0) / ((t1 - t0) || 1)) * 116 + 2, 38 - ((p.v - vmin) / ((vmax - vmin) || 1)) * 34]);
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 120 40"); svg.setAttribute("class", "spark"); svg.setAttribute("preserveAspectRatio", "none");
+  svg.setAttribute("role", "img"); svg.setAttribute("aria-label", `views over time, ${fmtNum(vmin)} to ${fmtNum(vmax)}`);
+  const pl = document.createElementNS(svg.namespaceURI, "polyline");
+  pl.setAttribute("points", xy.map(p => p.map(n => n.toFixed(1)).join(",")).join(" "));
+  pl.setAttribute("vector-effect", "non-scaling-stroke");
+  svg.append(pl);
+  return svg;
+}
+
+function videoRow(v, meta, history) {
+  const fmt = meta?.format || "other";
+  const pts = (history[v.id] || []).map(s => ({ t: new Date(s.at).getTime(), v: s.views }));
+  const dayAgo = Date.now() - 864e5;
+  const base = pts.find(p => p.t >= dayAgo);
+  const gain = base && pts.length > 1 ? v.views - base.v : null;
+  const rate = v.views ? (v.likes / v.views * 100).toFixed(1) + "% likes" : "";
+  const title = meta?.label || v.caption.replace(/#\S+/g, "").trim() || "untitled";
+  const row = el("article", { class: "vid", style: `--c: var(--${fmt})` },
+    el("div", {},
+      el("a", { class: "vid-title", href: v.url, target: "_blank", rel: "noopener" }, title),
+      el("div", { class: "vid-sub" }, `${FORMATS[fmt]} · posted ${ago(v.posted)}${meta?.pokemon ? " · " + meta.pokemon : ""}`),
+      el("div", { class: "vid-sub" }, `${fmtNum(v.likes)} likes · ${v.comments} comment${v.comments === 1 ? "" : "s"} · ${v.shares} share${v.shares === 1 ? "" : "s"} · ${rate}`)),
+    el("div", { class: "vid-views" },
+      el("b", {}, fmtNum(v.views)),
+      el("span", {}, "views"),
+      ...(gain ? [el("span", { class: "gain" }, ` +${fmtNum(gain)}`)] : [])),
+    el("div", { class: "spark-cell" }, spark(pts, fmt)));
+  return row;
+}
+
+async function load() {
+  const bust = "?t=" + Date.now();
+  const [latest, meta, snaps] = await Promise.all([
+    fetch("data/latest.json" + bust).then(r => r.json()),
+    fetch("videos.json" + bust).then(r => r.json()),
+    fetch("data/snapshots.csv" + bust).then(r => r.ok ? r.text() : "at,id,views").then(parseCSV),
+  ]);
+  const history = {};
+  for (const s of snaps) (history[s.id] ||= []).push(s);
+
+  document.getElementById("handle").textContent = "@" + latest.handle;
+  document.getElementById("updated").textContent = "updated " + ago(latest.updated);
+  const totals = document.getElementById("totals");
+  if (latest.account) {
+    totals.append(el("div", {}, el("b", {}, fmtNum(latest.account.followers)), el("span", {}, "followers")),
+                  el("div", {}, el("b", {}, fmtNum(latest.account.likes)), el("span", {}, "total likes")));
+  }
+
+  const quiz = latest.videos.filter(v => meta[v.id]);
+  const older = latest.videos.filter(v => !meta[v.id]);
+  const byFmt = {};
+  for (const v of quiz) (byFmt[meta[v.id].format] ||= []).push(v);
+  const avgs = Object.entries(byFmt).map(([f, vs]) => ({
+    f, n: vs.length, avg: vs.reduce((a, v) => a + v.views, 0) / vs.length,
+    rate: vs.reduce((a, v) => a + v.likes, 0) / Math.max(1, vs.reduce((a, v) => a + v.views, 0)) * 100,
+  })).sort((a, b) => b.avg - a.avg);
+  const top = Math.max(1, ...avgs.map(a => a.avg));
+  document.getElementById("formats").append(...avgs.map(a => el("div", { class: "fmt" },
+    el("div", { class: "fmt-name" }, el("span", { class: "dot", style: `background: var(--${a.f})` }), FORMATS[a.f]),
+    el("div", { class: "bar" }, el("i", { style: `width: ${(a.avg / top * 100).toFixed(1)}%; background: var(--${a.f})` })),
+    el("div", { class: "fmt-num" }, el("b", {}, fmtNum(Math.round(a.avg))), ` avg · ${a.n} video${a.n > 1 ? "s" : ""} · ${a.rate.toFixed(1)}% likes`))));
+
+  document.getElementById("quiz").append(...quiz.map(v => videoRow(v, meta[v.id], history)));
+  document.getElementById("older").append(...older.map(v => videoRow(v, null, history)));
+  document.getElementById("older-summary").textContent = `Earlier videos (${older.length})`;
+}
+
+load().catch(err => {
+  document.querySelector("main").append(el("div", { class: "err" }, "Couldn’t load the stats yet: " + err.message));
+});
+</script>
+</body>
+</html>
