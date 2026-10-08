@@ -129,7 +129,7 @@ const CAPTION_FORMATS = [
 function autoMeta(v) {
   for (const [re, format, name] of CAPTION_FORMATS) {
     if (re.test(v.caption)) {
-      const ep = v.caption.match(/#(\d+)|(?:royale|shiny|pok\S*mon)\s+(\d+)/i);
+      const ep = v.caption.match(/#(\d+)|(?:royale|shiny|pok\S*mon)\s+(\d+)/i);
       return { format, label: ep ? `${name} #${ep[1] || ep[2]}` : name };
     }
   }
