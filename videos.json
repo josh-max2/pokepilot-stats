@@ -1,10 +1,51 @@
 {
  "_note": "TikTok video id -> what the video is. Edited by hand (or by the local pipeline) when a video is posted. Ids not listed show as 'other'.",
- "7694140215287401758": {"format": "triangle", "label": "guess the pokémon #4", "pokemon": "Chi Yu, Trubbish, Bellibolt, Raging Bolt", "db_id": 4},
- "7694068238338116894": {"format": "shiny", "label": "guess the shiny #1", "pokemon": "Infernape, Raichu, Bellsprout, Seadra, Klink, Bunnelby", "db_id": 51},
- "7694007272636173598": {"format": "royale", "label": "evolution royale #1", "pokemon": "Raichu wins · Togepi, Swablu, Tynamo, Ralts, Bulbasaur, Fuecoco, Whismur, Pichu, Bellsprout, Roggenrola", "db_id": 49},
- "7693954798202178847": {"format": "whos", "label": "who's that pokémon #1", "pokemon": "Rotom, Sneasel, Cyndaquil, Vespiquen, Mantyke", "db_id": 33},
- "7693683150370753823": {"format": "triangle", "label": "guess the pokémon #1 (repost)", "pokemon": "Pidgey, Mega Gengar, Glaceon, Duosion", "db_id": 1},
- "7693632054105247007": {"format": "triangle", "label": "guess the pokémon #3", "pokemon": "Genesect, Bouffalant, Ferrothorn, Dewott", "db_id": 3},
- "7693587401943436575": {"format": "triangle", "label": "guess the pokémon #2", "pokemon": "Raging Bolt, Articuno, Okidogi, Snorunt, Numel", "db_id": 2}
+ "7694285293855182110": {
+  "format": "royale",
+  "label": "evolution royale #2",
+  "pokemon": "Gengar wins · Trapinch, Chikorita, Bellsprout, Froakie, Tepig, Budew, Squirtle, Mudkip, Gastly, Phanpy",
+  "db_id": 52
+ },
+ "7694140215287401758": {
+  "format": "triangle",
+  "label": "guess the pokémon #4",
+  "pokemon": "Chi Yu, Trubbish, Bellibolt, Raging Bolt",
+  "db_id": 4
+ },
+ "7694068238338116894": {
+  "format": "shiny",
+  "label": "guess the shiny #1",
+  "pokemon": "Infernape, Raichu, Bellsprout, Seadra, Klink, Bunnelby",
+  "db_id": 51
+ },
+ "7694007272636173598": {
+  "format": "royale",
+  "label": "evolution royale #1",
+  "pokemon": "Raichu wins · Togepi, Swablu, Tynamo, Ralts, Bulbasaur, Fuecoco, Whismur, Pichu, Bellsprout, Roggenrola",
+  "db_id": 49
+ },
+ "7693954798202178847": {
+  "format": "whos",
+  "label": "who's that pokémon #1",
+  "pokemon": "Rotom, Sneasel, Cyndaquil, Vespiquen, Mantyke",
+  "db_id": 33
+ },
+ "7693683150370753823": {
+  "format": "triangle",
+  "label": "guess the pokémon #1 (repost)",
+  "pokemon": "Pidgey, Mega Gengar, Glaceon, Duosion",
+  "db_id": 1
+ },
+ "7693632054105247007": {
+  "format": "triangle",
+  "label": "guess the pokémon #3",
+  "pokemon": "Genesect, Bouffalant, Ferrothorn, Dewott",
+  "db_id": 3
+ },
+ "7693587401943436575": {
+  "format": "triangle",
+  "label": "guess the pokémon #2",
+  "pokemon": "Raging Bolt, Articuno, Okidogi, Snorunt, Numel",
+  "db_id": 2
+ }
 }
