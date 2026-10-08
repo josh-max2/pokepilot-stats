@@ -118,6 +118,24 @@ const el = (tag, attrs = {}, ...kids) => {
   return e;
 };
 
+// Videos not listed in videos.json are sorted into a format from their caption, since every
+// format's caption starts with its own phrase.
+const CAPTION_FORMATS = [
+  [/guess the shiny/i, "shiny", "guess the shiny"],
+  [/who.s that pok/i, "whos", "who’s that pokémon"],
+  [/evolution royale|every KO = evolution/i, "royale", "evolution royale"],
+  [/how many can you get|guess these \d+ pok/i, "triangle", "guess the pokémon"],
+];
+function autoMeta(v) {
+  for (const [re, format, name] of CAPTION_FORMATS) {
+    if (re.test(v.caption)) {
+      const ep = v.caption.match(/#(\d+)/);
+      return { format, label: ep ? `${name} #${ep[1]}` : name };
+    }
+  }
+  return null;
+}
+
 function parseCSV(text) {
   const [head, ...rows] = text.trim().split(/\r?\n/);
   const keys = head.split(",");
@@ -177,6 +195,7 @@ async function load() {
                   el("div", {}, el("b", {}, fmtNum(latest.account.likes)), el("span", {}, "total likes")));
   }
 
+  for (const v of latest.videos) if (!meta[v.id]) { const m = autoMeta(v); if (m) meta[v.id] = m; }
   const quiz = latest.videos.filter(v => meta[v.id]);
   const older = latest.videos.filter(v => !meta[v.id]);
   const byFmt = {};
