@@ -1,5 +1,50 @@
 {
  "_note": "TikTok video id -> what the video is. Edited by hand (or by the local pipeline) when a video is posted. Ids not listed show as 'other'.",
+ "7696651950745586975": {
+  "format": "series",
+  "label": "top card vs S&P 500 · part 8/13: Which sets go up 6x?",
+  "episode": 8
+ },
+ "7696555934109142303": {
+  "format": "series",
+  "label": "top card vs S&P 500 · part 7/13: Can today's boxes double?",
+  "episode": 7
+ },
+ "7696247875340225823": {
+  "format": "series",
+  "label": "top card vs S&P 500 · part 6/13: Why scalpers win",
+  "episode": 6
+ },
+ "7696185259368533279": {
+  "format": "series",
+  "label": "top card vs S&P 500 · part 5/13: When to buy",
+  "episode": 5
+ },
+ "7695808028141964574": {
+  "format": "series",
+  "label": "top card vs S&P 500 · part 4/13: The one thing that beat the market",
+  "episode": 4
+ },
+ "7695503401848704287": {
+  "format": "series",
+  "label": "top card vs S&P 500 · part 3/13",
+  "episode": 3
+ },
+ "7695084215473409310": {
+  "format": "series",
+  "label": "top card vs S&P 500 · part 2/13",
+  "episode": 2
+ },
+ "7694777119582260511": {
+  "format": "series",
+  "label": "top card vs S&P 500 · part 1/13",
+  "episode": 1
+ },
+ "7694332919665511711": {
+  "format": "shiny",
+  "label": "guess the shiny #2",
+  "db_id": 53
+ },
  "7694285293855182110": {
   "format": "royale",
   "label": "evolution royale #2",

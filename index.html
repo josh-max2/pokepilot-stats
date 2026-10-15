@@ -11,18 +11,18 @@
 <style>
   :root {
     --bg: #eef2ef; --panel: #ffffff; --ink: #14201b; --muted: #5d6b64; --line: #d6ddd8;
-    --triangle: #d94f8a; --shiny: #c99700; --whos: #6f55a3; --royale: #e0552b; --other: #8a948f;
+    --triangle: #d94f8a; --shiny: #c99700; --whos: #6f55a3; --royale: #e0552b; --series: #1f8a7d; --other: #8a948f;
     --up: #1f8a4c;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #101513; --panel: #18201c; --ink: #e5ece8; --muted: #93a19a; --line: #29332e;
-      --triangle: #f07aab; --shiny: #f2c537; --whos: #a58ad8; --royale: #ff7d55; --other: #7d8883; --up: #5fd08d;
+      --triangle: #f07aab; --shiny: #f2c537; --whos: #a58ad8; --royale: #ff7d55; --series: #4cc4b4; --other: #7d8883; --up: #5fd08d;
     }
   }
   :root[data-theme="dark"] {
     --bg: #101513; --panel: #18201c; --ink: #e5ece8; --muted: #93a19a; --line: #29332e;
-    --triangle: #f07aab; --shiny: #f2c537; --whos: #a58ad8; --royale: #ff7d55; --other: #7d8883; --up: #5fd08d;
+    --triangle: #f07aab; --shiny: #f2c537; --whos: #a58ad8; --royale: #ff7d55; --series: #4cc4b4; --other: #7d8883; --up: #5fd08d;
   }
   * { box-sizing: border-box; margin: 0; }
   body { background: var(--bg); color: var(--ink); font: 400 16px/1.5 Rubik, system-ui, sans-serif;
@@ -100,7 +100,7 @@
 
 <script>
 const FORMATS = {
-  triangle: "triangle quiz", shiny: "guess the shiny", whos: "who’s that", royale: "royale", other: "other",
+  triangle: "triangle quiz", shiny: "guess the shiny", whos: "who’s that", royale: "royale", series: "card vs S&P series", other: "other",
 };
 const fmtNum = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M"
   : n >= 1e4 ? Math.round(n / 1e3) + "K" : n >= 1e3 ? (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K" : String(n);
