@@ -10,23 +10,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #eef2ef; --panel: #ffffff; --ink: #14201b; --muted: #5d6b64; --faint: #8a948f; --line: #d6ddd8;
+    --bg: #eef2ef; --panel: #ffffff; --ink: #14201b; --muted: #5d6b64; --faint: #8a948f; --line: #d6ddd8; --ghost: #c3cbc6;
     --acc: #1f8a7d; --up: #1f8a4c; --down: #b8432f;
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #101513; --panel: #18201c; --ink: #e5ece8; --muted: #93a19a; --faint: #6a7570; --line: #29332e;
+      --bg: #101513; --panel: #18201c; --ink: #e5ece8; --muted: #93a19a; --faint: #6a7570; --line: #29332e; --ghost: #3a4741;
       --acc: #4cc4b4; --up: #5fd08d; --down: #ef7a62;
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #101513; --panel: #18201c; --ink: #e5ece8; --muted: #93a19a; --faint: #6a7570; --line: #29332e;
+    --bg: #101513; --panel: #18201c; --ink: #e5ece8; --muted: #93a19a; --faint: #6a7570; --line: #29332e; --ghost: #3a4741;
     --acc: #4cc4b4; --up: #5fd08d; --down: #ef7a62;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
   }
   * { box-sizing: border-box; margin: 0; }
   body { background: var(--bg); color: var(--ink); font: 400 16px/1.5 Rubik, system-ui, sans-serif;
          font-variant-numeric: tabular-nums; padding: 28px 16px 64px; }
-  main { max-width: 960px; margin: 0 auto; }
+  main { max-width: 1040px; margin: 0 auto; }
   a { color: inherit; }
   header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin-bottom: 22px; }
   h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
@@ -36,48 +39,64 @@
                  border-radius: 7px; padding: 6px 12px; cursor: pointer; }
   .tabs button[aria-selected="true"] { background: var(--acc); color: var(--panel); }
   .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; position: relative; }
   .kpi span { color: var(--muted); font-size: 13px; display: block; }
   .kpi b { font-size: 30px; font-weight: 800; line-height: 1.15; display: block; letter-spacing: -0.01em; }
   .kpi small { font-size: 13px; color: var(--muted); }
   .up { color: var(--up); } .down { color: var(--down); }
-  h2 { font-size: 15px; font-weight: 700; color: var(--muted); margin: 30px 0 10px; }
-  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .chart { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 10px; position: relative; }
-  .chart h3 { font-size: 14px; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
-  .chart svg { width: 100%; height: 170px; display: block; overflow: visible; }
-  .chart .axis { fill: var(--faint); font-size: 11px; }
-  .chart .grid { stroke: var(--line); stroke-width: 1; }
-  .chart .line { fill: none; stroke: var(--acc); stroke-width: 2; stroke-linejoin: round; }
-  .chart .bar { fill: var(--acc); }
-  .chart .bar.partial { fill: var(--acc); opacity: .45; }
-  .chart .hit { fill: transparent; cursor: default; }
-  .chart .cross { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
-  .chart .dot { fill: var(--acc); stroke: var(--panel); stroke-width: 2; }
-  .tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--panel); font-size: 13px;
-         padding: 5px 9px; border-radius: 6px; white-space: nowrap; transform: translate(-50%, -110%); display: none; }
+  h2 { font-size: 19px; font-weight: 700; margin: 34px 0 4px; }
+  .lede { color: var(--muted); font-size: 14px; margin-bottom: 12px; max-width: 75ch; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .grid2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; }
+  .card h3 { font-size: 14px; font-weight: 500; color: var(--muted); margin-bottom: 2px; }
+  .card .now { font-size: 22px; font-weight: 700; line-height: 1.2; }
+  .card .now small { font-size: 13px; font-weight: 400; color: var(--muted); }
+  .card svg { width: 100%; display: block; overflow: visible; }
+  .axis { fill: var(--faint); font-size: 11px; }
+  .gridl { stroke: var(--line); stroke-width: 1; }
+  .ln { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .ln.ghost { stroke: var(--ghost); stroke-width: 1.5; }
+  .bar { fill: var(--acc); } .bar.partial { opacity: .45; }
+  .hit { fill: transparent; }
+  .cross { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+  .dot { stroke: var(--panel); stroke-width: 2; }
+  .dlabel { font-size: 12px; font-weight: 500; fill: var(--ink); }
+  .tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--panel); font-size: 13px; line-height: 1.4;
+         padding: 6px 10px; border-radius: 6px; white-space: nowrap; transform: translate(-50%, -110%); display: none; z-index: 2; }
+  .empty { color: var(--muted); font-size: 14px; padding: 18px 0; }
+  .stack { display: flex; height: 26px; border-radius: 6px; overflow: hidden; gap: 2px; margin: 10px 0 12px; }
+  .stack i { display: block; height: 100%; }
+  .legend { display: grid; gap: 6px; font-size: 14px; }
+  .legend div { display: flex; align-items: center; gap: 8px; }
+  .legend .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+  .legend b { margin-left: auto; font-weight: 500; }
   .table { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th { text-align: right; font-weight: 500; color: var(--muted); font-size: 12.5px; padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-  td { text-align: right; padding: 9px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { text-align: right; font-weight: 500; color: var(--muted); font-size: 12.5px; padding: 10px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; vertical-align: bottom; }
+  td { text-align: right; padding: 9px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
   tr:last-child td { border-bottom: 0; }
-  th:first-child, td:first-child { text-align: left; white-space: normal; min-width: 220px; }
+  th:first-child, td:first-child { text-align: left; white-space: normal; min-width: 200px; }
   td:first-child a { font-weight: 700; text-decoration: none; }
   td:first-child a:hover { text-decoration: underline; }
   td .sub { color: var(--muted); font-size: 12.5px; }
   td.big { font-weight: 700; }
   td.na { color: var(--faint); }
-  details { margin-top: 18px; }
+  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 7px; }
+  details { margin-top: 14px; }
   summary { cursor: pointer; color: var(--muted); font-weight: 500; font-size: 15px; margin-bottom: 10px; }
-  .note { color: var(--muted); font-size: 13px; margin-top: 28px; max-width: 72ch; }
+  .note { color: var(--muted); font-size: 13px; margin-top: 30px; max-width: 75ch; }
   .err { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
   :focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; border-radius: 4px; }
-  @media (max-width: 760px) {
+  @media (max-width: 860px) {
+    .grid3 { grid-template-columns: 1fr 1fr; }
+    .grid2 { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
     h1 { font-size: 26px; }
     .tabs { margin-left: 0; width: 100%; } .tabs button { flex: 1; }
-    .kpis { grid-template-columns: 1fr 1fr; }
+    .kpis, .grid3 { grid-template-columns: 1fr 1fr; gap: 8px; }
     .kpi b { font-size: 24px; }
-    .charts { grid-template-columns: 1fr; }
+    .card { padding: 12px; }
   }
 </style>
 </head>
@@ -91,10 +110,25 @@
 
   <div class="kpis" id="kpis"></div>
 
-  <div class="charts" style="margin-top:12px">
-    <div class="chart"><h3>Followers, last 30 days</h3><div id="c-foll"></div></div>
-    <div class="chart"><h3>Views per day, last 14 days (Mountain time)</h3><div id="c-views"></div></div>
+  <h2>Growth</h2>
+  <p class="lede">Each metric per day for the last 14 days. Today’s bar is partial.</p>
+  <div class="grid3" id="growth"></div>
+
+  <h2>Where views come from</h2>
+  <p class="lede" id="src-lede">Share of views by source, from TikTok Studio, weighted by each video’s views.</p>
+  <div class="grid2">
+    <div class="card" id="sources"></div>
+    <div class="card" id="viewers"></div>
   </div>
+
+  <h2>Retention by video type</h2>
+  <p class="lede">Share of viewers still watching at each second, averaged over the videos of each type that have a Studio curve. Studio adds a video’s curve about a week after it posts, so the newest types fill in later.</p>
+  <div class="card" id="ret-chart"></div>
+  <div class="table" id="ret-table" style="margin-top:12px"></div>
+
+  <h2>First hours</h2>
+  <p class="lede">Views in each video’s first 6 hours, from the hourly checks. The newest post is highlighted.</p>
+  <div class="card" id="race"></div>
 
   <h2 id="vids-h">Videos</h2>
   <div class="table" id="vids"></div>
@@ -103,9 +137,10 @@
     <div class="table" id="older"></div>
   </details>
 
-  <p class="note">Public numbers, pulled hourly from TikTok. Views per day add up every video’s gain that day; today’s bar is partial.
-    “At 24 h” is a video’s views on the first hourly check after it turned a day old, so new and old posts compare fairly.
-    Follows per 1k views and the 10k date use the last 7 days. Retention and watch time stay private in TikTok Studio.</p>
+  <p class="note">Views, likes, comments, shares and followers are public numbers, checked hourly. Sources, retention, finish rate,
+    average watch time and new followers per video come from TikTok Studio once a day at 7:30 PM, so the newest video can lag.
+    Studio shows retention after a few days. “At 2 h” and “At 24 h” are a video’s views at that age, so new and old posts compare fairly.
+    The 10K date uses the last 7 days’ follower gain.</p>
 </main>
 
 <script>
@@ -115,11 +150,13 @@ const ACCOUNTS = [
   { key: "raids", label: "Raids",            dir: "data/raids/" },
 ];
 const BATTLE = new Set(["duel", "viewercup", "hill", "raids"]);
-const GOAL = 10000, TZ = "America/Denver", DAY = 864e5;
+const GOAL = 10000, TZ = "America/Denver", DAY = 864e5, HOUR = 36e5;
+const SOURCES = [["For You", "For You"], ["Personal Profile", "Profile"], ["Follow", "Following"], ["Search", "Search"], ["*", "Other"]];
 
 const fmtNum = n => n == null || isNaN(n) ? "–" : Math.abs(n) >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M"
   : Math.abs(n) >= 1e4 ? Math.round(n / 1e3) + "K" : Math.abs(n) >= 1e3 ? (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K" : String(Math.round(n));
 const signed = n => n == null ? "–" : (n > 0 ? "+" : n < 0 ? "−" : "") + fmtNum(Math.abs(n));
+const pct = (x, d = 0) => x == null || isNaN(x) ? "–" : (x * 100).toFixed(d) + "%";
 const ago = iso => {
   const s = (Date.now() - new Date(iso)) / 1000;
   if (s < 90) return "just now";
@@ -132,11 +169,13 @@ const shortDay = t => new Intl.DateTimeFormat("en-US", { timeZone: TZ, month: "s
 const el = (tag, attrs = {}, ...kids) => {
   const e = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) k === "class" ? e.className = v : e.setAttribute(k, v);
-  for (const k of kids) if (k != null) e.append(k);
+  for (const k of kids) if (k != null && k !== "") e.append(k);
   return e;
 };
 const NS = "http://www.w3.org/2000/svg";
 const sv = (tag, attrs = {}) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); return e; };
+const svText = (attrs, text) => { const t = sv("text", attrs); t.textContent = text; return t; };
+const avg = xs => { const v = xs.filter(x => x != null && !isNaN(x)); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; };
 
 function parseCSV(text) {
   const [head, ...rows] = text.trim().split(/\r?\n/);
@@ -145,11 +184,11 @@ function parseCSV(text) {
 }
 const get = (url, fallback) => fetch(url + "?t=" + Date.now()).then(r => r.ok ? (url.endsWith(".json") ? r.json() : r.text()) : fallback).catch(() => fallback);
 
-// ---- metrics ----
-// Views gained, as {t, v} events: each video's rise between consecutive checks. A check that misses a video just
-// leaves a longer gap, so partial pulls never show up as drops or spikes. A video first seen after tracking began
+// ---- public metrics ----
+// Gains of one field, as {t, v} events: each video's rise between its consecutive checks. A check that misses a video
+// only leaves a longer gap, so partial pulls never show as drops or spikes. A video first seen after tracking began
 // counts its first reading too (it was posted in between).
-function viewGains(snaps) {
+function gainsOf(snaps, field) {
   const byVid = {};
   for (const s of snaps) (byVid[s.id] ||= []).push(s);
   const start = snaps.length ? new Date(snaps[0].at).getTime() : 0;
@@ -157,31 +196,23 @@ function viewGains(snaps) {
   for (const list of Object.values(byVid)) {
     let prev = null;
     for (const s of list) {
-      const t = new Date(s.at).getTime();
-      if (prev == null) { if (t > start + 36e5 * 2) out.push({ t, v: s.views }); }
-      else if (s.views > prev) out.push({ t, v: s.views - prev });
-      prev = Math.max(prev ?? 0, s.views);
+      const t = new Date(s.at).getTime(), x = s[field] || 0;
+      if (prev == null) { if (t > start + 2 * HOUR && x > 0) out.push({ t, v: x }); }
+      else if (x > prev) out.push({ t, v: x - prev });
+      prev = Math.max(prev ?? 0, x);
     }
   }
-  return out.sort((a, b) => a.t - b.t);
+  return out;
 }
 const sumSince = (gains, t) => gains.reduce((a, g) => g.t > t ? a + g.v : a, 0);
-function valueAt(series, t) {            // last point at or before t
-  let best = null;
-  for (const p of series) { if (p.t <= t) best = p; else break; }
-  return best;
-}
-function dailyViews(gains, snaps, days) {
-  const first = snaps.length ? dayKey(new Date(snaps[0].at).getTime()) : null;
-  const out = [];
-  for (let i = days - 1; i >= 0; i--) {
-    const t = Date.now() - i * DAY, day = dayKey(t);
-    if (first && day > first) out.push({ day, t, v: 0 });   // the first tracked day is partial, skip it
-  }
+function perDay(gains, firstSnap, days) {
+  const first = dayKey(firstSnap), out = [];
+  for (let i = days - 1; i >= 0; i--) { const t = Date.now() - i * DAY, day = dayKey(t); if (day > first) out.push({ day, t, v: 0 }); }
   const idx = new Map(out.map((d, i) => [d.day, i]));
   for (const g of gains) { const i = idx.get(dayKey(g.t)); if (i != null) out[i].v += g.v; }
   return out;
 }
+function valueAt(series, t) { let best = null; for (const p of series) { if (p.t <= t) best = p; else break; } return best; }
 function gainOver(series, ms) {
   if (!series.length) return null;
   const last = series[series.length - 1], base = valueAt(series, last.t - ms);
@@ -192,118 +223,247 @@ function gainOver(series, ms) {
 function attachTip(box) {
   const tip = el("div", { class: "tip" }); box.append(tip);
   return (x, y, text) => { if (text == null) { tip.style.display = "none"; return; }
-    tip.textContent = text; tip.style.left = x + "px"; tip.style.top = y + "px"; tip.style.display = "block"; };
+    tip.replaceChildren(...String(text).split("\n").flatMap((l, i) => i ? [el("br"), l] : [l]));
+    tip.style.left = x + "px"; tip.style.top = y + "px"; tip.style.display = "block"; };
 }
-function lineChart(box, pts) {
-  box.replaceChildren();
-  if (pts.length < 2) { box.append(el("p", { class: "updated" }, "Not enough history yet.")); return; }
-  const W = 420, H = 170, L = 38, R = 8, T = 8, B = 22;
-  const t0 = pts[0].t, t1 = pts[pts.length - 1].t;
-  let lo = Math.min(...pts.map(p => p.v)), hi = Math.max(...pts.map(p => p.v));
-  if (hi === lo) { hi += 1; lo -= 1; }
-  const pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
-  const X = t => L + (t - t0) / ((t1 - t0) || 1) * (W - L - R), Y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
-  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "none", role: "img",
-    "aria-label": `followers from ${fmtNum(pts[0].v)} to ${fmtNum(pts[pts.length - 1].v)}` });
+// series: [{name, color, pts:[{x,y}], ghost?, label?}]; opt: {h, xFmt, yFmt, xTicks, yMax, yMin, hover: "x"|"nearest", tipFmt}
+function lineChart(box, series, opt) {
+  const W = Math.max(260, box.clientWidth - 32), H = opt.h || 150, L = 40, R = opt.labelRoom || 8, T = 8, B = 20;
+  const all = series.flatMap(s => s.pts);
+  if (!all.length) { box.append(el("p", { class: "empty" }, opt.empty || "Not enough history yet.")); return; }
+  const x0 = opt.xMin ?? Math.min(...all.map(p => p.x)), x1 = opt.xMax ?? Math.max(...all.map(p => p.x));
+  let lo = opt.yMin ?? Math.min(...all.map(p => p.y)), hi = opt.yMax ?? Math.max(...all.map(p => p.y));
+  if (hi === lo) { hi += 1; lo = Math.max(0, lo - 1); }
+  if (opt.yMin == null) { const pad = (hi - lo) * 0.08; lo -= pad; hi += pad; }
+  const X = x => L + (x - x0) / ((x1 - x0) || 1) * (W - L - R), Y = y => T + (1 - (y - lo) / (hi - lo)) * (H - T - B);
+  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": opt.aria || "chart" });
   for (const f of [0, 0.5, 1]) {
-    const v = lo + pad + f * (hi - lo - 2 * pad), y = Y(v);
-    svg.append(sv("line", { class: "grid", x1: L, x2: W - R, y1: y, y2: y }));
-    const tx = sv("text", { class: "axis", x: L - 6, y: y + 4, "text-anchor": "end" }); tx.textContent = fmtNum(v); svg.append(tx);
+    const v = lo + f * (hi - lo), y = Y(v);
+    svg.append(sv("line", { class: "gridl", x1: L, x2: W - R, y1: y, y2: y }), svText({ class: "axis", x: L - 6, y: y + 4, "text-anchor": "end" }, opt.yFmt(v)));
   }
-  for (const [t, a] of [[t0, "start"], [t1, "end"]]) {
-    const tx = sv("text", { class: "axis", x: X(t), y: H - 4, "text-anchor": a }); tx.textContent = shortDay(t); svg.append(tx);
+  for (const x of opt.xTicks || [x0, x1]) svg.append(svText({ class: "axis", x: X(x), y: H - 4, "text-anchor": x === x0 ? "start" : x === x1 ? "end" : "middle" }, opt.xFmt(x)));
+  const ordered = [...series].sort((a, b) => (a.ghost ? 0 : 1) - (b.ghost ? 0 : 1));
+  for (const s of ordered) {
+    if (s.pts.length < 2) continue;
+    svg.append(sv("polyline", { class: "ln" + (s.ghost ? " ghost" : ""), style: s.ghost ? "" : `stroke: ${s.color}`,
+      points: s.pts.map(p => `${X(p.x).toFixed(1)},${Y(p.y).toFixed(1)}`).join(" ") }));
+    if (s.label) { const p = s.pts[s.pts.length - 1]; svg.append(svText({ class: "dlabel", x: X(p.x) + 6, y: Y(p.y) + 4 }, s.label)); }
   }
-  svg.append(sv("polyline", { class: "line", "vector-effect": "non-scaling-stroke",
-    points: pts.map(p => `${X(p.t).toFixed(1)},${Y(p.v).toFixed(1)}`).join(" ") }));
   const cross = sv("line", { class: "cross", y1: T, y2: H - B, visibility: "hidden" });
-  const dot = sv("circle", { class: "dot", r: 4, visibility: "hidden" });
-  svg.append(cross, dot);
+  const dots = series.map(s => sv("circle", { class: "dot", r: 4, visibility: "hidden", style: `fill: ${s.ghost ? "var(--muted)" : s.color}` }));
+  svg.append(cross, ...dots);
   const hit = sv("rect", { class: "hit", x: L, y: 0, width: W - L - R, height: H }); svg.append(hit);
   box.append(svg);
   const tip = attachTip(box);
   hit.addEventListener("pointermove", e => {
-    const r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W;
-    const t = t0 + (x - L) / (W - L - R) * (t1 - t0);
-    const p = pts.reduce((a, b) => Math.abs(b.t - t) < Math.abs(a.t - t) ? b : a);
-    cross.setAttribute("x1", X(p.t)); cross.setAttribute("x2", X(p.t)); cross.setAttribute("visibility", "visible");
-    dot.setAttribute("cx", X(p.t)); dot.setAttribute("cy", Y(p.v)); dot.setAttribute("visibility", "visible");
-    tip(X(p.t) / W * r.width + 16, Y(p.v) / H * r.height + 34, `${shortDay(p.t)}: ${p.v.toLocaleString()} followers`);
+    const r = svg.getBoundingClientRect(), mx = (e.clientX - r.left) / r.width * W, my = (e.clientY - r.top) / r.height * H;
+    const xv = x0 + (mx - L) / (W - L - R) * (x1 - x0);
+    const near = s => s.pts.length ? s.pts.reduce((a, b) => Math.abs(b.x - xv) < Math.abs(a.x - xv) ? b : a) : null;
+    dots.forEach(d => d.setAttribute("visibility", "hidden"));
+    let ax, ay, text;
+    if (opt.hover === "nearest") {
+      let best = null;
+      series.forEach((s, i) => { const p = near(s); if (p) { const d = Math.hypot(X(p.x) - mx, Y(p.y) - my); if (!best || d < best.d) best = { d, p, s, i }; } });
+      if (!best) return;
+      ax = X(best.p.x); ay = Y(best.p.y); text = opt.tipFmt(best.s, best.p);
+      dots[best.i].setAttribute("cx", ax); dots[best.i].setAttribute("cy", ay); dots[best.i].setAttribute("visibility", "visible");
+    } else {
+      const lines = [];
+      series.forEach((s, i) => { const p = near(s); if (!p) return; ax = X(p.x); dots[i].setAttribute("cx", X(p.x)); dots[i].setAttribute("cy", Y(p.y));
+        dots[i].setAttribute("visibility", "visible"); ay = ay == null ? Y(p.y) : Math.min(ay, Y(p.y)); lines.push(opt.tipFmt(s, p)); });
+      text = lines.join("\n");
+    }
+    cross.setAttribute("x1", ax); cross.setAttribute("x2", ax); cross.setAttribute("visibility", "visible");
+    tip(ax / W * r.width, ay / H * r.height - 8, text);
   });
-  hit.addEventListener("pointerleave", () => { cross.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); tip(); });
+  hit.addEventListener("pointerleave", () => { cross.setAttribute("visibility", "hidden"); dots.forEach(d => d.setAttribute("visibility", "hidden")); tip(); });
 }
-function barChart(box, days) {
-  box.replaceChildren();
-  if (!days.length) { box.append(el("p", { class: "updated" }, "Not enough history yet.")); return; }
-  const W = 420, H = 170, L = 38, R = 8, T = 8, B = 22;
+function barChart(box, days, name) {
+  if (!days.length) { box.append(el("p", { class: "empty" }, "Not enough history yet.")); return; }
+  const W = Math.max(220, box.clientWidth - 32), H = 120, L = 40, R = 8, T = 8, B = 20;
   const hi = Math.max(1, ...days.map(d => d.v)) * 1.08;
-  const slot = (W - L - R) / days.length, bw = Math.max(4, slot - 4);
+  const slot = (W - L - R) / days.length, bw = Math.max(3, slot - 4);
   const Y = v => T + (1 - v / hi) * (H - T - B);
-  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "none", role: "img", "aria-label": "views per day" });
-  for (const f of [0, 0.5, 1]) {
-    const v = f * hi / 1.08, y = Y(v);
-    svg.append(sv("line", { class: "grid", x1: L, x2: W - R, y1: y, y2: y }));
-    const tx = sv("text", { class: "axis", x: L - 6, y: y + 4, "text-anchor": "end" }); tx.textContent = fmtNum(v); svg.append(tx);
-  }
-  const today = dayKey(Date.now());
-  const tip = attachTip(box);
+  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": name + " per day" });
+  for (const f of [0, 0.5, 1]) { const v = f * hi / 1.08, y = Y(v);
+    svg.append(sv("line", { class: "gridl", x1: L, x2: W - R, y1: y, y2: y }), svText({ class: "axis", x: L - 6, y: y + 4, "text-anchor": "end" }, fmtNum(v))); }
+  const today = dayKey(Date.now()), tip = attachTip(box);
   days.forEach((d, i) => {
-    const x = L + i * slot + (slot - bw) / 2, y = Y(d.v), h = Math.max(0, H - B - y);
-    const r = Math.min(4, bw / 2, h);
-    // rounded top, square base
-    const path = h > 0 ? `M${x},${H - B} V${y + r} Q${x},${y} ${x + r},${y} H${x + bw - r} Q${x + bw},${y} ${x + bw},${y + r} V${H - B} Z` : "";
-    if (path) svg.append(sv("path", { class: "bar" + (d.day === today ? " partial" : ""), d: path }));
+    const x = L + i * slot + (slot - bw) / 2, y = Y(d.v), h = Math.max(0, H - B - y), r = Math.min(4, bw / 2, h);
+    if (h > 0) svg.append(sv("path", { class: "bar" + (d.day === today ? " partial" : ""),
+      d: `M${x},${H - B} V${y + r} Q${x},${y} ${x + r},${y} H${x + bw - r} Q${x + bw},${y} ${x + bw},${y + r} V${H - B} Z` }));
     const hit = sv("rect", { class: "hit", x: L + i * slot, y: T, width: slot, height: H - T - B });
-    hit.addEventListener("pointerenter", () => {
-      const rc = svg.getBoundingClientRect();
-      tip((x + bw / 2) / W * rc.width + 16, y / H * rc.height + 34, `${shortDay(d.t)}: ${d.v.toLocaleString()} views${d.day === today ? " so far" : ""}`);
-    });
+    hit.addEventListener("pointerenter", () => { const rc = svg.getBoundingClientRect();
+      tip((x + bw / 2) / W * rc.width, y / H * rc.height - 8, `${shortDay(d.t)}: ${d.v.toLocaleString()} ${name}${d.day === today ? " so far" : ""}`); });
     hit.addEventListener("pointerleave", () => tip());
     svg.append(hit);
   });
-  for (const [i, a] of [[0, "start"], [days.length - 1, "end"]]) {
-    const tx = sv("text", { class: "axis", x: a === "start" ? L : W - R, y: H - 4, "text-anchor": a }); tx.textContent = shortDay(days[i].t); svg.append(tx);
-  }
+  svg.append(svText({ class: "axis", x: L, y: H - 4 }, shortDay(days[0].t)), svText({ class: "axis", x: W - R, y: H - 4, "text-anchor": "end" }, shortDay(days[days.length - 1].t)));
   box.append(svg);
 }
 
-// ---- videos ----
-function videoTable(list, meta, history) {
-  const head = el("tr", {}, ...["Video", "Views", "At 2 h", "At 24 h", "Last 24 h", "Likes", "Like rate", "Comments", "Shares"].map(h => el("th", {}, h)));
-  const rows = list.map(v => {
-    const m = meta[v.id], posted = new Date(v.posted).getTime();
-    const pts = (history[v.id] || []).map(s => ({ t: new Date(s.at).getTime(), v: s.views }));
-    const atAge = h => { const p = pts.find(p => p.t >= posted + h * 36e5); return p && p.t - posted < (h + 3) * 36e5 ? p.v : null; };
-    const base = valueAt(pts, Date.now() - DAY);
-    const last24 = base && pts.length > 1 ? v.views - base.v : (Date.now() - posted < DAY ? v.views : null);
-    const title = m?.label?.replace(/\s*\([^)]*\)\s*$/, "") || v.caption.replace(/#\S+/g, "").trim() || "untitled";
-    const cell = (x, cls = "") => el("td", { class: (x == null ? "na " : "") + cls }, x == null ? "–" : x);
-    return el("tr", {},
-      el("td", {}, el("a", { href: v.url, target: "_blank", rel: "noopener" }, title),
-        el("div", { class: "sub" }, `posted ${ago(v.posted)}`)),
-      cell(fmtNum(v.views), "big"), cell(atAge(2) == null ? null : fmtNum(atAge(2))), cell(atAge(24) == null ? null : fmtNum(atAge(24))),
-      cell(last24 == null ? null : signed(last24), last24 > 0 ? "up" : ""),
-      cell(fmtNum(v.likes)), cell(v.views ? (v.likes / v.views * 100).toFixed(1) + "%" : null), cell(fmtNum(v.comments)), cell(fmtNum(v.shares)));
-  });
-  return el("table", {}, el("thead", {}, head), el("tbody", {}, ...rows));
-}
-
-// ---- page ----
+// ---- data ----
 const cache = {};
-let meta = {};
+let meta = {}, studio = { accounts: {}, videos: {} };
 async function loadAccount(a) {
   if (!cache[a.key]) {
-    const [latest, acc, snaps] = await Promise.all([
-      get(a.dir + "latest.json", null), get(a.dir + "account.csv", "at,followers"), get(a.dir + "snapshots.csv", "at,id,views"),
-    ]);
+    const [latest, acc, snaps] = await Promise.all([get(a.dir + "latest.json", null), get(a.dir + "account.csv", "at,followers"), get(a.dir + "snapshots.csv", "at,id,views")]);
     if (!latest) throw new Error(`no data for ${a.label} yet`);
     cache[a.key] = { latest, acc: parseCSV(acc), snaps: parseCSV(snaps) };
   }
   return cache[a.key];
 }
-function kpi(label, value, sub) { return el("div", { class: "kpi" }, el("span", {}, label), el("b", {}, value), sub); }
+const st = id => { const s = studio.videos[id]; return s && (s.finish > 0 || s.avg_watch > 0) ? s : null; };   // Studio sometimes returns all zeros
+const typeOf = (v, a) => meta[v.id]?.opening || (a.key === "main" ? "Other" : a.label);
+const titleOf = v => meta[v.id]?.label?.replace(/\s*\([^)]*\)\s*$/, "") || v.caption.replace(/#\S+/g, "").trim() || "untitled";
 
+// ---- sections ----
+function kpis(a, d, ctx) {
+  const { latest } = d, { foll, gains, vSpan, now } = ctx;
+  const f24 = gainOver(foll, DAY), f7 = gainOver(foll, 7 * DAY);
+  const v7 = vSpan > 0 ? { gain: sumSince(gains.views, now - vSpan), span: vSpan } : null;
+  const followers = latest.account?.followers ?? foll[foll.length - 1]?.v;
+  const fDay = f7 ? f7.gain / (f7.span / DAY) : null, vDay = v7 ? v7.gain / (v7.span / DAY) : null;
+  const rate = f7 && v7?.gain ? f7.gain / v7.gain * 1000 : null;
+  const etaDays = followers != null && fDay > 0 ? (GOAL - followers) / fDay : null;
+  const k = (label, value, sub) => el("div", { class: "card kpi" }, el("span", {}, label), el("b", {}, value), el("small", {}, sub));
+  document.getElementById("kpis").replaceChildren(
+    k("Followers", fmtNum(followers), f24 ? el("span", { class: f24.gain > 0 ? "up" : "" }, signed(f24.gain) + " last 24 h") : "tracking started today"),
+    vSpan < DAY ? k("Total views", fmtNum(latest.videos.reduce((s, v) => s + v.views, 0)), "views per day shows after a full day")
+      : k("Views per day", fmtNum(vDay), `7-day average, ${fmtNum(sumSince(gains.views, now - DAY))} last 24 h`),
+    k("Follows per 1k views", rate == null ? "–" : rate.toFixed(1), f7 ? `${signed(f7.gain)} followers in 7 days` : "needs a day of history"),
+    followers >= GOAL ? k("10K followers", "reached", "")
+      : k("10K followers", etaDays == null ? "–" : new Intl.DateTimeFormat("en-US", { timeZone: TZ, month: "short", year: "numeric" }).format(new Date(Date.now() + etaDays * DAY)),
+          fDay > 0 ? `at ${fmtNum(fDay)} a day, ${fmtNum(GOAL - followers)} to go` : "no follower growth yet"));
+}
+
+function growth(a, d, ctx) {
+  const box = document.getElementById("growth"); box.replaceChildren();
+  const { foll, gains, first } = ctx;
+  // followers: one point per day (the day's last check), last 14 days
+  const daily = new Map(); for (const p of foll) if (p.t >= Date.now() - 14 * DAY) daily.set(dayKey(p.t), p);
+  const fpts = [...daily.values()];
+  const fc = el("div", { class: "card" }, el("h3", {}, "Followers"),
+    el("div", { class: "now" }, fmtNum(fpts[fpts.length - 1]?.v), el("small", {}, fpts.length > 1 ? `  ${signed(fpts[fpts.length - 1].v - fpts[0].v)} in ${Math.round((fpts[fpts.length - 1].t - fpts[0].t) / DAY)} d` : "")));
+  box.append(fc);
+  lineChart(fc, [{ name: "followers", color: "var(--acc)", pts: fpts.map(p => ({ x: p.t, y: p.v })) }],
+    { h: 130, xFmt: shortDay, yFmt: fmtNum, hover: "x", aria: "followers per day", tipFmt: (s, p) => `${shortDay(p.x)}: ${p.y.toLocaleString()} followers` });
+  const fdays = []; for (let i = 1; i < fpts.length; i++) fdays.push({ day: dayKey(fpts[i].t), t: fpts[i].t, v: Math.max(0, fpts[i].v - fpts[i - 1].v) });
+  const metrics = [["Views", "views", gains.views], ["New followers", "followers", null], ["Likes", "likes", gains.likes],
+                   ["Comments", "comments", gains.comments], ["Shares", "shares", gains.shares]];
+  for (const [title, unit, g] of metrics) {
+    const days = g ? perDay(g, first, 14) : fdays;
+    const last7 = days.slice(-8, -1), wk = last7.reduce((s, x) => s + x.v, 0);
+    const c = el("div", { class: "card" }, el("h3", {}, title + " per day"),
+      el("div", { class: "now" }, fmtNum(last7.length ? wk / last7.length : null), el("small", {}, "  a day, last 7 full days")));
+    box.append(c);
+    barChart(c, days, unit);
+  }
+}
+
+function sources(a, d) {
+  const box = document.getElementById("sources"), vbox = document.getElementById("viewers");
+  box.replaceChildren(el("h3", {}, "Traffic sources"));
+  const tot = {}; let w = 0;
+  for (const v of d.latest.videos) {
+    const s = st(v.id); if (!s || !s.sources || !s.views) continue;
+    w += s.views;
+    for (const [k, x] of Object.entries(s.sources)) { const name = (SOURCES.find(([key]) => key === k) || SOURCES[4])[1]; tot[name] = (tot[name] || 0) + x * s.views; }
+  }
+  if (!w) box.append(el("p", { class: "empty" }, "No Studio data for this account yet."));
+  else {
+    const rows = SOURCES.map(([, n], i) => ({ n, v: (tot[n] || 0) / w, c: `var(--s${i + 1})` }));
+    box.append(el("div", { class: "stack", role: "img", "aria-label": rows.map(r => `${r.n} ${pct(r.v)}`).join(", ") },
+      ...rows.filter(r => r.v > 0.002).map(r => el("i", { style: `width:${r.v * 100}%;background:${r.c}`, title: `${r.n} ${pct(r.v, 1)}` }))),
+      el("div", { class: "legend" }, ...rows.map(r => el("div", {}, el("span", { class: "sw", style: `background:${r.c}` }), r.n, el("b", {}, pct(r.v, 1))))));
+  }
+  vbox.replaceChildren(el("h3", {}, "New vs returning viewers"));
+  const sa = studio.accounts[a.key];
+  const nv = sa?.new_viewers || [], rv = sa?.returning_viewers || [];
+  const n = nv.reduce((s, x) => s + (x.v || 0), 0), r = rv.reduce((s, x) => s + (x.v || 0), 0);
+  if (!(n + r)) { vbox.append(el("p", { class: "empty" }, "No Studio data for this account yet.")); return; }
+  vbox.append(el("div", { class: "now" }, pct(r / (n + r), 1), el("small", {}, " of viewers came back, last 7 days")),
+    el("div", { class: "stack" }, el("i", { style: `width:${n / (n + r) * 100}%;background:var(--s1)` }), el("i", { style: `width:${r / (n + r) * 100}%;background:var(--s2)` })),
+    el("div", { class: "legend" }, el("div", {}, el("span", { class: "sw", style: "background:var(--s1)" }), "New viewers", el("b", {}, fmtNum(n))),
+      el("div", {}, el("span", { class: "sw", style: "background:var(--s2)" }), "Returning viewers", el("b", {}, fmtNum(r)))),
+    el("p", { class: "updated", style: "margin-top:10px" }, `Studio pull ${sa.pulled ? ago(sa.pulled) : ""}`));
+}
+
+function atAge(pts, posted, h) { const p = pts.find(p => p.t >= posted + h * HOUR); return p && p.t - posted < (h + 3) * HOUR ? p.v : null; }
+
+function retention(a, d, ctx) {
+  const cbox = document.getElementById("ret-chart"), tbox = document.getElementById("ret-table");
+  cbox.replaceChildren(el("h3", {}, "Still watching"));
+  const vids = d.latest.videos.filter(v => a.key !== "main" || BATTLE.has(meta[v.id]?.format));
+  const groups = new Map();
+  for (const v of vids) { const t = typeOf(v, a); if (!groups.has(t)) groups.set(t, []); groups.get(t).push(v); }
+  const order = [...groups.keys()].sort((x, y) => Math.max(...groups.get(y).map(v => +new Date(v.posted))) - Math.max(...groups.get(x).map(v => +new Date(v.posted))));
+  const color = new Map(order.map((g, i) => [g, order.length === 1 ? "var(--acc)" : `var(--s${(i % 5) + 1})`]));
+  const series = [];
+  for (const g of order) {
+    const curves = groups.get(g).map(v => st(v.id)?.retention).filter(Boolean);
+    if (!curves.length) continue;
+    const len = Math.min(60, Math.max(...curves.map(c => c.length)));
+    const pts = []; for (let s = 0; s < len; s++) { const y = avg(curves.map(c => c[s])); if (y != null) pts.push({ x: s, y }); }
+    series.push({ name: g, color: color.get(g), pts, n: curves.length, label: order.length > 1 ? `${pct(pts[pts.length - 1].y)}` : null });
+  }
+  lineChart(cbox, series, { h: 220, xMin: 0, yMin: 0, yMax: 1, xFmt: s => s + " s", yFmt: v => pct(v), xTicks: [0, 10, 20, 30, 45, 59].filter(x => x <= Math.max(0, ...series.map(s => s.pts.length - 1))),
+    hover: "x", labelRoom: 40, aria: "retention curves by video type", empty: "Studio has no retention curves for these videos yet.",
+    tipFmt: (s, p) => `${s.name} at ${p.x} s: ${pct(p.y)}` });
+  const head = el("tr", {}, ...["Type", "Videos", "At 3 s", "At 10 s", "Finish", "Avg watch", "Views at 2 h", "Views at 24 h", "Follows per 1k"].map(h => el("th", {}, h)));
+  const rows = order.map(g => {
+    const vs = groups.get(g), ss = vs.map(v => st(v.id)).filter(Boolean);
+    const at = s => avg(ss.map(x => x.retention?.[s]));
+    const age = h => avg(vs.map(v => atAge(ctx.hist(v.id), +new Date(v.posted), h)));
+    const fol = ss.filter(x => x.views && x.new_followers != null);
+    const per1k = fol.length ? fol.reduce((s, x) => s + x.new_followers, 0) / fol.reduce((s, x) => s + x.views, 0) * 1000 : null;
+    const c = x => el("td", { class: x === "–" ? "na" : "" }, x);
+    return el("tr", {}, el("td", {}, el("span", { class: "swatch", style: `background:${color.get(g)}` }), g),
+      c(String(vs.length)), c(pct(at(3))), c(pct(at(10))), c(pct(avg(ss.map(x => x.finish)), 1)),
+      c(avg(ss.map(x => x.avg_watch)) == null ? "–" : avg(ss.map(x => x.avg_watch)).toFixed(1) + " s"),
+      c(fmtNum(age(2))), c(fmtNum(age(24))), c(per1k == null ? "–" : per1k.toFixed(1)));
+  });
+  tbox.replaceChildren(el("table", {}, el("thead", {}, head), el("tbody", {}, ...rows)));
+}
+
+function race(a, d, ctx) {
+  const box = document.getElementById("race"); box.replaceChildren(el("h3", {}, "Views by hours since posting"));
+  const vids = d.latest.videos.filter(v => (a.key !== "main" || BATTLE.has(meta[v.id]?.format)) && Date.now() - new Date(v.posted) < 30 * DAY)
+    .sort((x, y) => new Date(y.posted) - new Date(x.posted)).slice(0, 10);
+  const series = vids.map((v, i) => {
+    const posted = +new Date(v.posted);
+    const pts = [{ x: 0, y: 0 }, ...ctx.hist(v.id).filter(p => p.t - posted <= 6.5 * HOUR && p.t >= posted).map(p => ({ x: (p.t - posted) / HOUR, y: p.v }))];
+    return { name: titleOf(v), color: "var(--acc)", ghost: i > 0, pts, label: i === 0 ? "newest" : null };
+  }).filter(s => s.pts.length > 1);
+  lineChart(box, series, { h: 240, xMin: 0, xMax: 6, yMin: 0, xFmt: h => h + " h", yFmt: fmtNum, xTicks: [0, 1, 2, 3, 4, 5, 6], hover: "nearest", labelRoom: 52,
+    aria: "views in the first 6 hours per video", empty: "No videos in the last 30 days.",
+    tipFmt: (s, p) => `${s.name}\n${fmtNum(p.y)} views at ${p.x.toFixed(1)} h` });
+}
+
+function videoTable(list, a, ctx) {
+  const head = el("tr", {}, ...["Video", "Views", "At 2 h", "At 24 h", "Last 24 h", "Still at 3 s", "Finish", "Avg watch", "For You", "New follows", "Like rate", "Comments", "Shares"].map(h => el("th", {}, h)));
+  const rows = list.map(v => {
+    const posted = +new Date(v.posted), pts = ctx.hist(v.id), s = st(v.id);
+    const base = valueAt(pts, Date.now() - DAY);
+    const last24 = base && pts.length > 1 ? v.views - base.v : (Date.now() - posted < DAY ? v.views : null);
+    const cell = (x, cls = "") => el("td", { class: (x == null || x === "–" ? "na " : "") + cls }, x == null ? "–" : x);
+    const a2 = atAge(pts, posted, 2), a24 = atAge(pts, posted, 24);
+    return el("tr", {},
+      el("td", {}, el("a", { href: v.url, target: "_blank", rel: "noopener" }, titleOf(v)),
+        el("div", { class: "sub" }, `${meta[v.id]?.opening ? meta[v.id].opening + ", " : ""}posted ${ago(v.posted)}`)),
+      cell(fmtNum(v.views), "big"), cell(a2 == null ? null : fmtNum(a2)), cell(a24 == null ? null : fmtNum(a24)),
+      cell(last24 == null ? null : signed(last24), last24 > 0 ? "up" : ""),
+      cell(s?.retention ? pct(s.retention[3]) : null), cell(s ? pct(s.finish, 1) : null), cell(s ? s.avg_watch.toFixed(1) + " s" : null),
+      cell(s?.sources?.["For You"] != null ? pct(s.sources["For You"]) : null), cell(s?.new_followers ?? null),
+      cell(v.views ? (v.likes / v.views * 100).toFixed(1) + "%" : null), cell(fmtNum(v.comments)), cell(fmtNum(v.shares)));
+  });
+  return el("table", {}, el("thead", {}, head), el("tbody", {}, ...rows));
+}
+
+// ---- page ----
 async function show(key) {
   const a = ACCOUNTS.find(x => x.key === key) || ACCOUNTS[0];
+  current = a.key;
   for (const b of document.querySelectorAll(".tabs button")) b.setAttribute("aria-selected", b.dataset.key === a.key);
   try { history.replaceState(null, "", a.key === "main" ? location.pathname : "#" + a.key); } catch {}
   let d;
@@ -313,50 +473,29 @@ async function show(key) {
   document.getElementById("handle").textContent = "@" + latest.handle;
   document.getElementById("updated").textContent = "updated " + ago(latest.updated);
 
-  const foll = acc.map(r => ({ t: new Date(r.at).getTime(), v: r.followers })).filter(p => p.v > 0);
-  const gains = viewGains(snaps);
-  const now = new Date(latest.updated).getTime(), snap0 = snaps.length ? new Date(snaps[0].at).getTime() : now;
-  const vSpan = Math.min(7 * DAY, now - snap0);
-  const f24 = gainOver(foll, DAY), f7 = gainOver(foll, 7 * DAY);
-  const v24 = { gain: sumSince(gains, now - DAY), span: DAY };
-  const v7 = vSpan > 0 ? { gain: sumSince(gains, now - vSpan), span: vSpan } : null;
-  const followers = latest.account?.followers ?? foll[foll.length - 1]?.v;
-  const perDay = g => g ? g.gain / (g.span / DAY) : null;
-  const fDay = perDay(f7), vDay = perDay(v7);
-  const rate = f7 && v7 && v7.gain ? f7.gain / v7.gain * 1000 : null;
-  const etaDays = followers != null && fDay > 0 ? (GOAL - followers) / fDay : null;
-  const short = g => g && g.span < 6.5 * DAY ? ` (${Math.max(1, Math.round(g.span / DAY))} d of data)` : "";
+  const hist = {}; for (const s of snaps) (hist[s.id] ||= []).push({ t: new Date(s.at).getTime(), v: s.views });
+  const now = new Date(latest.updated).getTime(), first = snaps.length ? new Date(snaps[0].at).getTime() : now;
+  const ctx = {
+    now, first, vSpan: Math.min(7 * DAY, now - first), hist: id => hist[id] || [],
+    foll: acc.map(r => ({ t: new Date(r.at).getTime(), v: r.followers })).filter(p => p.v > 0),
+    gains: Object.fromEntries(["views", "likes", "comments", "shares"].map(f => [f, gainsOf(snaps, f)])),
+  };
+  kpis(a, d, ctx); growth(a, d, ctx); sources(a, d); retention(a, d, ctx); race(a, d, ctx);
 
-  document.getElementById("kpis").replaceChildren(
-    kpi("Followers", fmtNum(followers), f24 ? el("small", {}, el("span", { class: f24.gain > 0 ? "up" : "", style: "display:inline" }, signed(f24.gain)), " last 24 h") : el("small", {}, "tracking started today")),
-    vSpan < DAY
-      ? kpi("Total views", fmtNum(latest.videos.reduce((a, v) => a + v.views, 0)), el("small", {}, "views per day shows after a full day of tracking"))
-      : kpi("Views per day", fmtNum(vDay), el("small", {}, `7-day average${short(v7)} · ${fmtNum(v24?.gain)} last 24 h`)),
-    kpi("Follows per 1k views", rate == null ? "–" : rate.toFixed(1), el("small", {}, f7 ? `${signed(f7.gain)} followers in 7 days` : "needs a day of history")),
-    followers >= GOAL ? kpi("10K followers", "reached", el("small", {}, ""))
-      : kpi("10K followers", etaDays == null ? "–" : new Intl.DateTimeFormat("en-US", { timeZone: TZ, month: "short", year: "numeric" }).format(new Date(Date.now() + etaDays * DAY)),
-          el("small", {}, fDay > 0 ? `at ${fmtNum(fDay)} a day, ${fmtNum(GOAL - followers)} to go` : "no follower growth yet")));
-
-  const cut = Date.now() - 30 * DAY;
-  const daily = new Map();
-  for (const p of foll) if (p.t >= cut) daily.set(dayKey(p.t), p);       // one point per day, the day's last check
-  lineChart(document.getElementById("c-foll"), [...daily.values()]);
-  barChart(document.getElementById("c-views"), dailyViews(gains, snaps, 14));
-
-  const hist = {};
-  for (const s of snaps) (hist[s.id] ||= []).push(s);
   const vids = [...latest.videos].sort((x, y) => new Date(y.posted) - new Date(x.posted));
   const isBattle = v => a.key !== "main" || BATTLE.has(meta[v.id]?.format);
   const main = vids.filter(isBattle), older = vids.filter(v => !isBattle(v));
   document.getElementById("vids-h").textContent = a.key === "main" ? `Battle videos (${main.length})` : `Videos (${main.length})`;
-  document.getElementById("vids").replaceChildren(main.length ? videoTable(main, meta, hist) : el("p", { class: "err" }, "No videos yet."));
+  document.getElementById("vids").replaceChildren(main.length ? videoTable(main, a, ctx) : el("p", { class: "err" }, "No videos yet."));
   document.getElementById("older-box").hidden = !older.length;
   document.getElementById("older-summary").textContent = `Older formats (${older.length})`;
-  document.getElementById("older").replaceChildren(older.length ? videoTable(older, meta, hist) : "");
+  document.getElementById("older").replaceChildren(older.length ? videoTable(older, a, ctx) : "");
 }
 
+let resizeT, current = "main";
+addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(() => show(current), 200); });
 (async () => {
-  meta = await get("videos.json", {});
+  [meta, studio] = await Promise.all([get("videos.json", {}), get("data/studio.json", { accounts: {}, videos: {} })]);
   const tabs = document.getElementById("tabs");
   for (const a of ACCOUNTS) {
     const b = el("button", { role: "tab", "data-key": a.key, "aria-selected": "false" }, a.label);

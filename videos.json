@@ -3,32 +3,38 @@
  "7698776268438899998": {
   "format": "duel",
   "label": "Legends bracket SF1: Gary vs Red",
-  "pokemon": "Snorlax, Venusaur, Espeon vs Arcanine, Umbreon, Blastoise · seed 742 · Gary wins"
+  "pokemon": "Snorlax, Venusaur, Espeon vs Arcanine, Umbreon, Blastoise · seed 742 · Gary wins",
+  "opening": "VS card + spoken hook"
  },
  "7698404975361183007": {
   "format": "duel",
   "label": "Legends bracket QF4: Lance vs Leon",
-  "pokemon": "Gyarados, Aerodactyl, Dragonite vs Aegislash, Dragapult, Charizard · seed 287 · Lance wins"
+  "pokemon": "Gyarados, Aerodactyl, Dragonite vs Aegislash, Dragapult, Charizard · seed 287 · Lance wins",
+  "opening": "VS card + spoken hook"
  },
  "7698079664979430686": {
   "format": "duel",
   "label": "Legends bracket QF3: Steven vs Cynthia",
-  "pokemon": "Skarmory, Aggron, Metagross vs Lucario, Milotic, Garchomp · seed 931 · Cynthia wins"
+  "pokemon": "Skarmory, Aggron, Metagross vs Lucario, Milotic, Garchomp · seed 931 · Cynthia wins",
+  "opening": "VS card + spoken hook"
  },
  "7697675056582872350": {
   "format": "duel",
   "label": "Legends bracket QF2: Red vs Agatha",
-  "pokemon": "Snorlax, Venusaur, Espeon vs Arbok, Crobat, Gengar · seed 100 · Red wins"
+  "pokemon": "Snorlax, Venusaur, Espeon vs Arbok, Crobat, Gengar · seed 100 · Red wins",
+  "opening": "VS card + spoken hook"
  },
  "7697319350096743710": {
   "format": "duel",
   "label": "Legends bracket QF1: Ash vs Gary",
-  "pokemon": "Pikachu, Greninja, Charizard vs Arcanine, Umbreon, Blastoise · seed 41 · Gary wins"
+  "pokemon": "Pikachu, Greninja, Charizard vs Arcanine, Umbreon, Blastoise · seed 41 · Gary wins",
+  "opening": "VS card + spoken hook"
  },
  "7696921751476784414": {
   "format": "duel",
   "label": "3v3 duel pilot: Pikachu, Charizard, Snorlax vs Gengar, Lucario, Blastoise",
-  "pokemon": "Pikachu, Charizard, Snorlax vs Gengar, Lucario, Blastoise · seed 1"
+  "pokemon": "Pikachu, Charizard, Snorlax vs Gengar, Lucario, Blastoise · seed 1",
+  "opening": "VS card + spoken hook"
  },
  "7696651950745586975": {
   "format": "series",
@@ -126,43 +132,51 @@
  "7700660665618418974": {
   "format": "viewercup",
   "label": "Viewer Cup R5 @robbieortega vs @animegaminglove A (phone post)",
-  "pokemon": "Overqwil, Greninja, Tauros vs Alakazam, Dragonite, Mega Absol"
+  "pokemon": "Overqwil, Greninja, Tauros vs Alakazam, Dragonite, Mega Absol",
+  "opening": "VS screen cold open"
  },
  "7700700957025275167": {
   "format": "viewercup",
   "label": "Viewer Cup R2 @coquit0papi vs @daybreak.doll (phone post)",
-  "pokemon": "Hydreigon, Obstagoon, Weavile vs Roserade, Steelix, Gallade"
+  "pokemon": "Hydreigon, Obstagoon, Weavile vs Roserade, Steelix, Gallade",
+  "opening": "VS screen cold open"
  },
  "7700990722433928461": {
   "format": "viewercup",
   "label": "Viewer Cup R6 @kliff_ho vs @fransqy17 (web post, failed+retry)",
-  "pokemon": "Gallade, Decidueye, Volcarona vs Gliscor, Garchomp, Electivire"
+  "pokemon": "Gallade, Decidueye, Volcarona vs Gliscor, Garchomp, Electivire",
+  "opening": "VS screen cold open"
  },
  "7701067805663317262": {
   "format": "viewercup",
   "label": "Viewer Cup R3 @kingexp78 vs @kentswildafrica (web post, failed+retry)",
-  "pokemon": "Sceptile, Ceruledge, Armarouge vs Gengar, Charizard, Mewtwo"
+  "pokemon": "Sceptile, Ceruledge, Armarouge vs Gengar, Charizard, Mewtwo",
+  "opening": "VS screen cold open"
  },
  "7701362775146253581": {
   "format": "viewercup",
   "label": "Viewer Cup R7 @jerome2245 vs @kwok_seon_ (web post, failed+retry; opening B + freeze CTA + short end)",
-  "pokemon": "Mewtwo, Snorlax, Steelix vs Sceptile, Typhlosion, Greninja"
+  "pokemon": "Mewtwo, Snorlax, Steelix vs Sceptile, Typhlosion, Greninja",
+  "opening": "Fight at 0 s + freeze CTA"
  },
  "7701379293061860639": {
   "format": "hill",
   "account": "pokepilot.hill",
   "label": "King of the Hill day 1: Cynthia vs Ash (king holds)",
-  "pokemon": "Garchomp, Lucario, Milotic vs Pikachu, Charizard, Greninja"
+  "pokemon": "Garchomp, Lucario, Milotic vs Pikachu, Charizard, Greninja",
+  "opening": "King of the Hill"
  },
  "7701398171989150989": {
   "format": "raids",
   "account": "pokepilot.raids",
   "label": "How many Pikachu to beat Snorlax, EP 1 (answer 39)",
-  "pokemon": "Pikachu x60 vs Snorlax"
+  "pokemon": "Pikachu x60 vs Snorlax",
+  "opening": "Raids"
  },
  "7701440492096982285": {
   "format": "viewercup",
   "label": "Viewer Cup R4 @contamaosei vs @the_charlotte_times (web post, failed+retry; louder voice, music -4)",
-  "pokemon": "Arcanine, Blastoise, Sceptile vs Clodsire, Hisuian Typhlosion, Meowstic"
+  "pokemon": "Arcanine, Blastoise, Sceptile vs Clodsire, Hisuian Typhlosion, Meowstic",
+  "opening": "Fight at 0 s + freeze CTA"
  }
 }
