@@ -1,10 +1,12 @@
-"""Snapshot @pokepilot2's public TikTok stats: per-video views/likes/comments/shares (yt-dlp,
-no login) and the profile's follower/like totals (the public profile page's embedded JSON).
+"""Snapshot the public TikTok stats of @pokepilot2 and the two side channels (@pokepilot.hill, @pokepilot.raids; added
+2026-10-27): per-video views/likes/comments/shares (yt-dlp, no login) and each profile's follower/like totals (the public
+profile page's embedded JSON).
 
     python track.py
 
-Appends to data/snapshots.csv and data/account.csv and rewrites data/latest.json, which the
-dashboard (index.html) reads. Run hourly by .github/workflows/track.yml.
+Main account: appends to data/snapshots.csv and data/account.csv and rewrites data/latest.json, which the dashboard
+(index.html) reads. Side channels: the same three files under data/hill/ and data/raids/. A side channel failing never
+fails the run. Run hourly by .github/workflows/track.yml.
 """
 from __future__ import annotations
 
@@ -19,6 +21,7 @@ import urllib.request
 from pathlib import Path
 
 HANDLE = "pokepilot2"
+SIDE = {"pokepilot.hill": "hill", "pokepilot.raids": "raids"}     # handle -> data subfolder
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -26,20 +29,23 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
 STATE_RE = re.compile(r'<script[^>]*id="__UNIVERSAL_DATA_FOR_REHYDRATION__"[^>]*>([^<]+)</script>')
 
 
-def videos() -> list[dict]:
-    out = subprocess.run([sys.executable, "-m", "yt_dlp", "--flat-playlist", "-J", f"https://www.tiktok.com/@{HANDLE}"],
+def videos(handle: str, required: bool) -> list[dict]:
+    out = subprocess.run([sys.executable, "-m", "yt_dlp", "--flat-playlist", "-J", f"https://www.tiktok.com/@{handle}"],
                          capture_output=True, text=True, encoding="utf-8")
     if out.returncode != 0:
+        if not required:
+            print(f"@{handle}: yt-dlp failed: {out.stderr[-300:]}", file=sys.stderr)
+            return []
         raise SystemExit(f"yt-dlp failed:\n{out.stderr[-2000:]}")
     entries = json.loads(out.stdout).get("entries") or []
-    if not entries:
+    if not entries and required:
         raise SystemExit("yt-dlp returned no videos (blocked or profile private?)")
     return entries
 
 
-def account() -> dict | None:
+def account(handle: str) -> dict | None:
     """Follower / total-like counts from the public profile page; None if TikTok serves a challenge."""
-    req = urllib.request.Request(f"https://www.tiktok.com/@{HANDLE}", headers={
+    req = urllib.request.Request(f"https://www.tiktok.com/@{handle}", headers={
         "User-Agent": UA, "Accept-Language": "en-US,en;q=0.9", "Accept-Encoding": "gzip"})
     try:
         with urllib.request.urlopen(req, timeout=20) as r:
@@ -51,7 +57,7 @@ def account() -> dict | None:
         return {"followers": int(stats["followerCount"]), "likes": int(stats["heartCount"]),
                 "videos": int(stats["videoCount"])}
     except Exception as exc:  # noqa: BLE001 - the per-video pull still counts as a good run
-        print(f"profile stats unavailable: {exc}", file=sys.stderr)
+        print(f"@{handle}: profile stats unavailable: {exc}", file=sys.stderr)
         return None
 
 
@@ -64,24 +70,24 @@ def append(path: Path, header: list[str], rows: list[list]) -> None:
         w.writerows(rows)
 
 
-def main() -> None:
-    DATA.mkdir(exist_ok=True)
-    now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
-    vids = videos()
-    append(DATA / "snapshots.csv", ["at", "id", "views", "likes", "comments", "shares"],
-           [[now, e["id"], e.get("view_count") or 0, e.get("like_count") or 0, e.get("comment_count") or 0,
-             e.get("repost_count") or 0] for e in vids])
-    acct = account()
+def snapshot(handle: str, data: Path, now: str, required: bool) -> str:
+    data.mkdir(parents=True, exist_ok=True)
+    vids = videos(handle, required)
+    if vids:
+        append(data / "snapshots.csv", ["at", "id", "views", "likes", "comments", "shares"],
+               [[now, e["id"], e.get("view_count") or 0, e.get("like_count") or 0, e.get("comment_count") or 0,
+                 e.get("repost_count") or 0] for e in vids])
+    acct = account(handle)
     if acct:
-        append(DATA / "account.csv", ["at", "followers", "likes", "videos"],
+        append(data / "account.csv", ["at", "followers", "likes", "videos"],
                [[now, acct["followers"], acct["likes"], acct["videos"]]])
     latest = {
         "updated": now,
-        "handle": HANDLE,
+        "handle": handle,
         "account": acct,
         "videos": [{
             "id": e["id"],
-            "url": f"https://www.tiktok.com/@{HANDLE}/video/{e['id']}",
+            "url": f"https://www.tiktok.com/@{handle}/video/{e['id']}",
             "posted": dt.datetime.fromtimestamp(e.get("timestamp") or 0, dt.timezone.utc).isoformat(),
             "caption": e.get("description") or e.get("title") or "",
             "views": e.get("view_count") or 0,
@@ -90,8 +96,18 @@ def main() -> None:
             "shares": e.get("repost_count") or 0,
         } for e in vids],
     }
-    (DATA / "latest.json").write_text(json.dumps(latest, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"{now}: {len(vids)} videos" + (f", {acct['followers']} followers" if acct else ""))
+    (data / "latest.json").write_text(json.dumps(latest, ensure_ascii=False, indent=1), encoding="utf-8")
+    return f"@{handle}: {len(vids)} videos" + (f", {acct['followers']} followers" if acct else "")
+
+
+def main() -> None:
+    now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
+    print(now, snapshot(HANDLE, DATA, now, required=True))
+    for handle, sub in SIDE.items():
+        try:
+            print(now, snapshot(handle, DATA / sub, now, required=False))
+        except Exception as exc:  # noqa: BLE001
+            print(f"@{handle}: skipped ({exc})", file=sys.stderr)
 
 
 if __name__ == "__main__":

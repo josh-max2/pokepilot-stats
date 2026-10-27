@@ -147,5 +147,22 @@
   "format": "viewercup",
   "label": "Viewer Cup R7 @jerome2245 vs @kwok_seon_ (web post, failed+retry; opening B + freeze CTA + short end)",
   "pokemon": "Mewtwo, Snorlax, Steelix vs Sceptile, Typhlosion, Greninja"
+ },
+ "7701379293061860639": {
+  "format": "hill",
+  "account": "pokepilot.hill",
+  "label": "King of the Hill day 1: Cynthia vs Ash (king holds)",
+  "pokemon": "Garchomp, Lucario, Milotic vs Pikachu, Charizard, Greninja"
+ },
+ "7701398171989150989": {
+  "format": "raids",
+  "account": "pokepilot.raids",
+  "label": "How many Pikachu to beat Snorlax, EP 1 (answer 39)",
+  "pokemon": "Pikachu x60 vs Snorlax"
+ },
+ "7701440492096982285": {
+  "format": "viewercup",
+  "label": "Viewer Cup R4 @contamaosei vs @the_charlotte_times (web post, failed+retry; louder voice, music -4)",
+  "pokemon": "Arcanine, Blastoise, Sceptile vs Clodsire, Hisuian Typhlosion, Meowstic"
  }
 }
