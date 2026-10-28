@@ -81,6 +81,12 @@
   td .sub { color: var(--muted); font-size: 12.5px; }
   td.big { font-weight: 700; }
   td.na { color: var(--faint); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .chips button { font: 500 14px Rubik, system-ui, sans-serif; color: var(--ink); background: var(--panel); border: 1px solid var(--line);
+                  border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+  .chips button[aria-selected="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+  .grid2b { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 860px) { .grid2b { grid-template-columns: 1fr; } }
   .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 7px; }
   details { margin-top: 14px; }
   summary { cursor: pointer; color: var(--muted); font-weight: 500; font-size: 15px; margin-bottom: 10px; }
@@ -121,21 +127,18 @@
     <div class="card" id="viewers"></div>
   </div>
 
-  <h2>Retention by video type</h2>
-  <p class="lede">Share of viewers still watching at each second, averaged over the videos of each type that have a Studio curve. Studio adds a video’s curve about a week after it posts, so the newest types fill in later.</p>
-  <div class="card" id="ret-chart"></div>
-  <div class="table" id="ret-table" style="margin-top:12px"></div>
-
-  <h2>First hours</h2>
-  <p class="lede">Views in each video’s first 6 hours, from the hourly checks. The newest post is highlighted.</p>
-  <div class="card" id="race"></div>
+  <h2>Compare groups</h2>
+  <p class="lede">Battle videos from the last 14 days, grouped by one trait at a time. One-off formats are left out.
+    Views, like rate and comment rate use the median video, so one viral post doesn’t carry its group. Retention fills in about a week after a post.</p>
+  <div class="chips" id="traits" role="tablist"></div>
+  <div class="table" id="cmp-table"></div>
+  <div class="grid2b" style="margin-top:12px">
+    <div class="card" id="ret-chart"></div>
+    <div class="card" id="race"></div>
+  </div>
 
   <h2 id="vids-h">Videos</h2>
   <div class="table" id="vids"></div>
-  <details id="older-box">
-    <summary id="older-summary">Older formats</summary>
-    <div class="table" id="older"></div>
-  </details>
 
   <p class="note">Views, likes, comments, shares and followers are public numbers, checked hourly. Sources, retention, finish rate,
     average watch time and new followers per video come from TikTok Studio once a day at 7:30 PM, so the newest video can lag.
@@ -149,7 +152,6 @@ const ACCOUNTS = [
   { key: "hill",  label: "King of the Hill", dir: "data/hill/" },
   { key: "raids", label: "Raids",            dir: "data/raids/" },
 ];
-const BATTLE = new Set(["duel", "viewercup", "hill", "raids"]);
 const GOAL = 10000, TZ = "America/Denver", DAY = 864e5, HOUR = 36e5;
 const SOURCES = [["For You", "For You"], ["Personal Profile", "Profile"], ["Follow", "Following"], ["Search", "Search"], ["*", "Other"]];
 
@@ -314,7 +316,6 @@ async function loadAccount(a) {
   return cache[a.key];
 }
 const st = id => { const s = studio.videos[id]; return s && (s.finish > 0 || s.avg_watch > 0) ? s : null; };   // Studio sometimes returns all zeros
-const typeOf = (v, a) => meta[v.id]?.opening || (a.key === "main" ? "Other" : a.label);
 const titleOf = v => meta[v.id]?.label?.replace(/\s*\([^)]*\)\s*$/, "") || v.caption.replace(/#\S+/g, "").trim() || "untitled";
 
 // ---- sections ----
@@ -389,55 +390,92 @@ function sources(a, d) {
     el("p", { class: "updated", style: "margin-top:10px" }, `Studio pull ${sa.pulled ? ago(sa.pulled) : ""}`));
 }
 
-function atAge(pts, posted, h) { const p = pts.find(p => p.t >= posted + h * HOUR); return p && p.t - posted < (h + 3) * HOUR ? p.v : null; }
+// Views at an exact age, read between the two checks around it (up to 12 h apart); null if the video isn't that old
+// yet or the checks don't cover it.
+function atAge(pts, posted, h) {
+  const t = posted + h * HOUR, i = pts.findIndex(p => p.t >= t);
+  if (i < 0) return null;
+  const b = pts[i], a = i > 0 ? pts[i - 1] : { t: posted, v: 0 };
+  if (b.t - a.t > 12 * HOUR) return b.t - t < 3 * HOUR ? b.v : null;
+  return Math.round(a.v + (b.v - a.v) * (t - a.t) / ((b.t - a.t) || 1));
+}
 
-function retention(a, d, ctx) {
-  const cbox = document.getElementById("ret-chart"), tbox = document.getElementById("ret-table");
-  cbox.replaceChildren(el("h3", {}, "Still watching"));
-  const vids = d.latest.videos.filter(v => a.key !== "main" || BATTLE.has(meta[v.id]?.format));
+const TRAITS = ["Opening", "Series", "Round", "Ask", "Ending", "Cover lead", "Post time", "Day"];
+let trait = "Opening";
+const median = xs => { const v = xs.filter(x => x != null && !isNaN(x)).sort((a, b) => a - b); if (!v.length) return null;
+  const m = v.length >> 1; return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2; };
+const mtHour = t => +new Intl.DateTimeFormat("en-US", { timeZone: TZ, hour: "numeric", hourCycle: "h23" }).format(new Date(t));
+const mtDow = t => new Intl.DateTimeFormat("en-US", { timeZone: TZ, weekday: "short" }).format(new Date(t));
+function traitOf(v, a, name) {
+  if (name === "Post time") return mtHour(v.posted) < 12 ? "Morning (before noon)" : "Afternoon";
+  if (name === "Day") return ["Sat", "Sun"].includes(mtDow(v.posted)) ? "Weekend" : "Weekday";
+  if (a.key !== "main") return a.label;
+  return meta[v.id]?.traits?.[name] ?? null;
+}
+// The videos the comparison and the table cover: last 14 days, battle videos (tagged), no one-offs.
+function scope(a, d) {
+  return d.latest.videos.filter(v => Date.now() - new Date(v.posted) < 14 * DAY && !meta[v.id]?.oneoff && (a.key !== "main" || meta[v.id]?.traits))
+    .sort((x, y) => new Date(y.posted) - new Date(x.posted));
+}
+
+function compare(a, d, ctx) {
+  const vids = scope(a, d);
+  const names = a.key === "main" ? TRAITS : ["Post time", "Day"];
+  if (!names.includes(trait)) trait = names[0];
+  const chips = document.getElementById("traits");
+  chips.replaceChildren(...names.map(n => { const b = el("button", { role: "tab", "aria-selected": String(n === trait) }, n);
+    b.addEventListener("click", () => { trait = n; compare(a, d, ctx); }); return b; }));
   const groups = new Map();
-  for (const v of vids) { const t = typeOf(v, a); if (!groups.has(t)) groups.set(t, []); groups.get(t).push(v); }
-  const order = [...groups.keys()].sort((x, y) => Math.max(...groups.get(y).map(v => +new Date(v.posted))) - Math.max(...groups.get(x).map(v => +new Date(v.posted))));
+  for (const v of vids) { const g = traitOf(v, a, trait); if (g == null) continue; if (!groups.has(g)) groups.set(g, []); groups.get(g).push(v); }
+  // order: by each group's first post, so the list reads in the order the changes were made
+  const order = [...groups.keys()].sort((x, y) => Math.min(...groups.get(x).map(v => +new Date(v.posted))) - Math.min(...groups.get(y).map(v => +new Date(v.posted))));
   const color = new Map(order.map((g, i) => [g, order.length === 1 ? "var(--acc)" : `var(--s${(i % 5) + 1})`]));
+
+  const head = el("tr", {}, ...["Group", "Videos", "Views at 2 h", "At 24 h", "At 48 h", "Views now", "Like rate", "Comment rate", "Follows per 1k", "Still at 3 s", "At 10 s", "Finish", "Avg watch"].map(h => el("th", {}, h)));
+  const rows = order.map(g => {
+    const vs = groups.get(g), ss = vs.map(v => st(v.id)).filter(Boolean);
+    const age = h => median(vs.map(v => atAge(ctx.hist(v.id), +new Date(v.posted), h)));
+    const fol = ss.filter(x => x.views && x.new_followers != null);
+    const per1k = fol.length ? fol.reduce((s, x) => s + x.new_followers, 0) / fol.reduce((s, x) => s + x.views, 0) * 1000 : null;
+    const ret = sec => avg(ss.map(x => x.retention?.[sec]));
+    const aw = avg(ss.map(x => x.avg_watch));
+    const c = (x, cls = "") => el("td", { class: (x === "–" ? "na " : "") + cls }, x);
+    return el("tr", {}, el("td", {}, el("span", { class: "swatch", style: `background:${color.get(g)}` }), g),
+      c(String(vs.length)), c(fmtNum(age(2))), c(fmtNum(age(24))), c(fmtNum(age(48))), c(fmtNum(median(vs.map(v => v.views))), "big"),
+      c(pct(median(vs.map(v => v.views ? v.likes / v.views : null)), 1)), c(pct(median(vs.map(v => v.views ? v.comments / v.views : null)), 2)),
+      c(per1k == null ? "–" : per1k.toFixed(1)), c(pct(ret(3))), c(pct(ret(10))), c(pct(avg(ss.map(x => x.finish)), 1)), c(aw == null ? "–" : aw.toFixed(1) + " s"));
+  });
+  document.getElementById("cmp-table").replaceChildren(vids.length ? el("table", {}, el("thead", {}, head), el("tbody", {}, ...rows))
+    : el("p", { class: "empty", style: "padding:16px" }, "No videos in the last 14 days."));
+
+  // retention curves, one per group
+  const cbox = document.getElementById("ret-chart"); cbox.replaceChildren(el("h3", {}, "Still watching, by second"));
   const series = [];
   for (const g of order) {
     const curves = groups.get(g).map(v => st(v.id)?.retention).filter(Boolean);
     if (!curves.length) continue;
     const len = Math.min(60, Math.max(...curves.map(c => c.length)));
-    const pts = []; for (let s = 0; s < len; s++) { const y = avg(curves.map(c => c[s])); if (y != null) pts.push({ x: s, y }); }
-    series.push({ name: g, color: color.get(g), pts, n: curves.length, label: order.length > 1 ? `${pct(pts[pts.length - 1].y)}` : null });
+    const pts = []; for (let i = 0; i < len; i++) { const y = avg(curves.map(c => c[i])); if (y != null) pts.push({ x: i, y }); }
+    series.push({ name: `${g} (${curves.length})`, color: color.get(g), pts });
   }
-  lineChart(cbox, series, { h: 220, xMin: 0, yMin: 0, yMax: 1, xFmt: s => s + " s", yFmt: v => pct(v), xTicks: [0, 10, 20, 30, 45, 59].filter(x => x <= Math.max(0, ...series.map(s => s.pts.length - 1))),
-    hover: "x", labelRoom: 40, aria: "retention curves by video type", empty: "Studio has no retention curves for these videos yet.",
-    tipFmt: (s, p) => `${s.name} at ${p.x} s: ${pct(p.y)}` });
-  const head = el("tr", {}, ...["Type", "Videos", "At 3 s", "At 10 s", "Finish", "Avg watch", "Views at 2 h", "Views at 24 h", "Follows per 1k"].map(h => el("th", {}, h)));
-  const rows = order.map(g => {
-    const vs = groups.get(g), ss = vs.map(v => st(v.id)).filter(Boolean);
-    const at = s => avg(ss.map(x => x.retention?.[s]));
-    const age = h => avg(vs.map(v => atAge(ctx.hist(v.id), +new Date(v.posted), h)));
-    const fol = ss.filter(x => x.views && x.new_followers != null);
-    const per1k = fol.length ? fol.reduce((s, x) => s + x.new_followers, 0) / fol.reduce((s, x) => s + x.views, 0) * 1000 : null;
-    const c = x => el("td", { class: x === "–" ? "na" : "" }, x);
-    return el("tr", {}, el("td", {}, el("span", { class: "swatch", style: `background:${color.get(g)}` }), g),
-      c(String(vs.length)), c(pct(at(3))), c(pct(at(10))), c(pct(avg(ss.map(x => x.finish)), 1)),
-      c(avg(ss.map(x => x.avg_watch)) == null ? "–" : avg(ss.map(x => x.avg_watch)).toFixed(1) + " s"),
-      c(fmtNum(age(2))), c(fmtNum(age(24))), c(per1k == null ? "–" : per1k.toFixed(1)));
-  });
-  tbox.replaceChildren(el("table", {}, el("thead", {}, head), el("tbody", {}, ...rows)));
-}
+  lineChart(cbox, series, { h: 220, xMin: 0, xMax: 59, yMin: 0, yMax: 1, xFmt: x => x + " s", yFmt: v => pct(v), xTicks: [0, 10, 20, 30, 45, 59],
+    hover: "x", aria: "retention by group", empty: "Studio has no retention curves for these videos yet.", tipFmt: (s, p) => `${s.name} at ${p.x} s: ${pct(p.y)}` });
+  if (series.length > 1) cbox.append(el("div", { class: "legend", style: "grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); margin-top: 8px" },
+    ...series.map(x => el("div", {}, el("span", { class: "sw", style: `background:${x.color}` }), x.name))));
 
-function race(a, d, ctx) {
-  const box = document.getElementById("race"); box.replaceChildren(el("h3", {}, "Views by hours since posting"));
-  const vids = d.latest.videos.filter(v => (a.key !== "main" || BATTLE.has(meta[v.id]?.format)) && Date.now() - new Date(v.posted) < 30 * DAY)
-    .sort((x, y) => new Date(y.posted) - new Date(x.posted)).slice(0, 10);
-  const series = vids.map((v, i) => {
+  // first 6 hours, one line per video in its group's colour
+  const rbox = document.getElementById("race"); rbox.replaceChildren(el("h3", {}, "Views in the first 6 hours"));
+  const lines = [];
+  for (const g of order) for (const v of groups.get(g)) {
     const posted = +new Date(v.posted);
-    const pts = [{ x: 0, y: 0 }, ...ctx.hist(v.id).filter(p => p.t - posted <= 6.5 * HOUR && p.t >= posted).map(p => ({ x: (p.t - posted) / HOUR, y: p.v }))];
-    return { name: titleOf(v), color: "var(--acc)", ghost: i > 0, pts, label: i === 0 ? "newest" : null };
-  }).filter(s => s.pts.length > 1);
-  lineChart(box, series, { h: 240, xMin: 0, xMax: 6, yMin: 0, xFmt: h => h + " h", yFmt: fmtNum, xTicks: [0, 1, 2, 3, 4, 5, 6], hover: "nearest", labelRoom: 52,
-    aria: "views in the first 6 hours per video", empty: "No videos in the last 30 days.",
+    const pts = [{ x: 0, y: 0 }, ...ctx.hist(v.id).filter(p => p.t >= posted && p.t - posted <= 6.05 * HOUR).map(p => ({ x: (p.t - posted) / HOUR, y: p.v }))];
+    if (pts.length > 1) lines.push({ name: `${titleOf(v)}\n${g}`, color: color.get(g), pts });
+  }
+  lineChart(rbox, lines, { h: 220, xMin: 0, xMax: 6, yMin: 0, xFmt: h => h + " h", yFmt: fmtNum, xTicks: [0, 1, 2, 3, 4, 5, 6], hover: "nearest",
+    aria: "views in the first 6 hours, coloured by group", empty: "No hourly checks for these videos yet.",
     tipFmt: (s, p) => `${s.name}\n${fmtNum(p.y)} views at ${p.x.toFixed(1)} h` });
+  if (order.length > 1) rbox.append(el("div", { class: "legend", style: "grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); margin-top: 8px" },
+    ...order.map(g => el("div", {}, el("span", { class: "sw", style: `background:${color.get(g)}` }), g))));
 }
 
 function videoTable(list, a, ctx) {
@@ -450,7 +488,7 @@ function videoTable(list, a, ctx) {
     const a2 = atAge(pts, posted, 2), a24 = atAge(pts, posted, 24);
     return el("tr", {},
       el("td", {}, el("a", { href: v.url, target: "_blank", rel: "noopener" }, titleOf(v)),
-        el("div", { class: "sub" }, `${meta[v.id]?.opening ? meta[v.id].opening + ", " : ""}posted ${ago(v.posted)}`)),
+        el("div", { class: "sub" }, `${meta[v.id]?.traits ? meta[v.id].traits.Opening + ", " : ""}posted ${ago(v.posted)}`)),
       cell(fmtNum(v.views), "big"), cell(a2 == null ? null : fmtNum(a2)), cell(a24 == null ? null : fmtNum(a24)),
       cell(last24 == null ? null : signed(last24), last24 > 0 ? "up" : ""),
       cell(s?.retention ? pct(s.retention[3]) : null), cell(s ? pct(s.finish, 1) : null), cell(s ? s.avg_watch.toFixed(1) + " s" : null),
@@ -480,16 +518,11 @@ async function show(key) {
     foll: acc.map(r => ({ t: new Date(r.at).getTime(), v: r.followers })).filter(p => p.v > 0),
     gains: Object.fromEntries(["views", "likes", "comments", "shares"].map(f => [f, gainsOf(snaps, f)])),
   };
-  kpis(a, d, ctx); growth(a, d, ctx); sources(a, d); retention(a, d, ctx); race(a, d, ctx);
+  kpis(a, d, ctx); growth(a, d, ctx); sources(a, d); compare(a, d, ctx);
 
-  const vids = [...latest.videos].sort((x, y) => new Date(y.posted) - new Date(x.posted));
-  const isBattle = v => a.key !== "main" || BATTLE.has(meta[v.id]?.format);
-  const main = vids.filter(isBattle), older = vids.filter(v => !isBattle(v));
-  document.getElementById("vids-h").textContent = a.key === "main" ? `Battle videos (${main.length})` : `Videos (${main.length})`;
-  document.getElementById("vids").replaceChildren(main.length ? videoTable(main, a, ctx) : el("p", { class: "err" }, "No videos yet."));
-  document.getElementById("older-box").hidden = !older.length;
-  document.getElementById("older-summary").textContent = `Older formats (${older.length})`;
-  document.getElementById("older").replaceChildren(older.length ? videoTable(older, a, ctx) : "");
+  const vids = scope(a, d);
+  document.getElementById("vids-h").textContent = `Videos, last 14 days (${vids.length})`;
+  document.getElementById("vids").replaceChildren(vids.length ? videoTable(vids, a, ctx) : el("p", { class: "empty", style: "padding:16px" }, "No videos in the last 14 days."));
 }
 
 let resizeT, current = "main";

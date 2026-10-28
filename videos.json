@@ -4,37 +4,73 @@
   "format": "duel",
   "label": "Legends bracket SF1: Gary vs Red",
   "pokemon": "Snorlax, Venusaur, Espeon vs Arcanine, Umbreon, Blastoise · seed 742 · Gary wins",
-  "opening": "VS card + spoken hook"
+  "traits": {
+   "Series": "Legends",
+   "Round": "Semifinal / final",
+   "Opening": "Bracket intro",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Trainer names"
+  }
  },
  "7698404975361183007": {
   "format": "duel",
   "label": "Legends bracket QF4: Lance vs Leon",
   "pokemon": "Gyarados, Aerodactyl, Dragonite vs Aegislash, Dragapult, Charizard · seed 287 · Lance wins",
-  "opening": "VS card + spoken hook"
+  "traits": {
+   "Series": "Legends",
+   "Round": "Quarterfinal",
+   "Opening": "Plain VS screen",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Trainer names"
+  }
  },
  "7698079664979430686": {
   "format": "duel",
   "label": "Legends bracket QF3: Steven vs Cynthia",
   "pokemon": "Skarmory, Aggron, Metagross vs Lucario, Milotic, Garchomp · seed 931 · Cynthia wins",
-  "opening": "VS card + spoken hook"
+  "traits": {
+   "Series": "Legends",
+   "Round": "Quarterfinal",
+   "Opening": "Plain VS screen",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Trainer names"
+  }
  },
  "7697675056582872350": {
   "format": "duel",
   "label": "Legends bracket QF2: Red vs Agatha",
   "pokemon": "Snorlax, Venusaur, Espeon vs Arbok, Crobat, Gengar · seed 100 · Red wins",
-  "opening": "VS card + spoken hook"
+  "traits": {
+   "Series": "Legends",
+   "Round": "Quarterfinal",
+   "Opening": "Plain VS screen",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Trainer names"
+  }
  },
  "7697319350096743710": {
   "format": "duel",
   "label": "Legends bracket QF1: Ash vs Gary",
   "pokemon": "Pikachu, Greninja, Charizard vs Arcanine, Umbreon, Blastoise · seed 41 · Gary wins",
-  "opening": "VS card + spoken hook"
+  "traits": {
+   "Series": "Legends",
+   "Round": "Quarterfinal",
+   "Opening": "Plain VS screen",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Trainer names"
+  }
  },
  "7696921751476784414": {
   "format": "duel",
   "label": "3v3 duel pilot: Pikachu, Charizard, Snorlax vs Gengar, Lucario, Blastoise",
   "pokemon": "Pikachu, Charizard, Snorlax vs Gengar, Lucario, Blastoise · seed 1",
-  "opening": "VS card + spoken hook"
+  "opening": "VS card + spoken hook",
+  "oneoff": true
  },
  "7696651950745586975": {
   "format": "series",
@@ -133,50 +169,136 @@
   "format": "viewercup",
   "label": "Viewer Cup R5 @robbieortega vs @animegaminglove A (phone post)",
   "pokemon": "Overqwil, Greninja, Tauros vs Alakazam, Dragonite, Mega Absol",
-  "opening": "VS screen cold open"
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Voice hook + bracket intro",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "@handles"
+  }
  },
  "7700700957025275167": {
   "format": "viewercup",
   "label": "Viewer Cup R2 @coquit0papi vs @daybreak.doll (phone post)",
   "pokemon": "Hydreigon, Obstagoon, Weavile vs Roserade, Steelix, Gallade",
-  "opening": "VS screen cold open"
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Voice hook + bracket intro",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "@handles"
+  }
  },
  "7700990722433928461": {
   "format": "viewercup",
   "label": "Viewer Cup R6 @kliff_ho vs @fransqy17 (web post, failed+retry)",
   "pokemon": "Gallade, Decidueye, Volcarona vs Gliscor, Garchomp, Electivire",
-  "opening": "VS screen cold open"
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Cold VS start",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Pokémon names"
+  }
  },
  "7701067805663317262": {
   "format": "viewercup",
   "label": "Viewer Cup R3 @kingexp78 vs @kentswildafrica (web post, failed+retry)",
   "pokemon": "Sceptile, Ceruledge, Armarouge vs Gengar, Charizard, Mewtwo",
-  "opening": "VS screen cold open"
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Cold VS start",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Pokémon names"
+  }
  },
  "7701362775146253581": {
   "format": "viewercup",
   "label": "Viewer Cup R7 @jerome2245 vs @kwok_seon_ (web post, failed+retry; opening B + freeze CTA + short end)",
   "pokemon": "Mewtwo, Snorlax, Steelix vs Sceptile, Typhlosion, Greninja",
-  "opening": "Fight at 0 s + freeze CTA"
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
  },
  "7701379293061860639": {
   "format": "hill",
   "account": "pokepilot.hill",
   "label": "King of the Hill day 1: Cynthia vs Ash (king holds)",
-  "pokemon": "Garchomp, Lucario, Milotic vs Pikachu, Charizard, Greninja",
-  "opening": "King of the Hill"
+  "pokemon": "Garchomp, Lucario, Milotic vs Pikachu, Charizard, Greninja"
  },
  "7701398171989150989": {
   "format": "raids",
   "account": "pokepilot.raids",
   "label": "How many Pikachu to beat Snorlax, EP 1 (answer 39)",
-  "pokemon": "Pikachu x60 vs Snorlax",
-  "opening": "Raids"
+  "pokemon": "Pikachu x60 vs Snorlax"
  },
  "7701440492096982285": {
   "format": "viewercup",
   "label": "Viewer Cup R4 @contamaosei vs @the_charlotte_times (web post, failed+retry; louder voice, music -4)",
   "pokemon": "Arcanine, Blastoise, Sceptile vs Clodsire, Hisuian Typhlosion, Meowstic",
-  "opening": "Fight at 0 s + freeze CTA"
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7699159573495581983": {
+  "label": "Legends bracket SF2: Lance vs Cynthia",
+  "format": "duel",
+  "traits": {
+   "Series": "Legends",
+   "Round": "Semifinal / final",
+   "Opening": "Bracket intro",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Trainer names"
+  }
+ },
+ "7699515852852350238": {
+  "label": "Legends final: Lance vs Gary (4 on 4)",
+  "format": "duel",
+  "traits": {
+   "Series": "Legends",
+   "Round": "Semifinal / final",
+   "Opening": "Bracket intro",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Trainer names"
+  }
+ },
+ "7700273363574361374": {
+  "label": "Viewer Cup R1 @ivanalvarez221 vs @animegaminglove B",
+  "format": "viewercup",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Bracket intro",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "@handles"
+  }
+ },
+ "7699900415348985119": {
+  "oneoff": true,
+  "label": "Evolution Royale EP 1",
+  "format": "oneoff"
+ },
+ "7700019818514189598": {
+  "oneoff": true,
+  "label": "Viewer Cup entry call",
+  "format": "oneoff"
  }
 }
