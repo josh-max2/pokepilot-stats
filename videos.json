@@ -300,5 +300,218 @@
   "oneoff": true,
   "label": "Viewer Cup entry call",
   "format": "oneoff"
+ },
+ "7701716772164029710": {
+  "format": "viewercup",
+  "label": "Viewer Cup R8 (human_post era)",
+  "pokemon": "Tyrantrum vs Garchomp",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7701831646672129294": {
+  "format": "viewercup",
+  "label": "Viewer Cup QF1 @animegaminglove vs @daybreak.doll",
+  "pokemon": "Rhyperior vs Roserade",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Quarterfinal",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7702089082360335630": {
+  "format": "viewercup",
+  "label": "Viewer Cup QF2 (NOT INDEXED, 76 views)",
+  "pokemon": "Charizard vs Hisuian Typhlosion",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Quarterfinal",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7702182627322727694": {
+  "format": "viewercup",
+  "label": "Viewer Cup QF3 @robbieortega vs @fransqy17",
+  "pokemon": "Tauros vs Garchomp",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Quarterfinal",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7702519146143124766": {
+  "format": "viewercup",
+  "label": "Viewer Cup QF4 @jerome2245 vs @alsin185 (old look via --old-dodge, phone repost)",
+  "pokemon": "Mewtwo vs Garchomp",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Quarterfinal",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7702830890207939854": {
+  "format": "viewercup",
+  "label": "Viewer Cup SF2 @fransqy17 vs @jerome2245",
+  "pokemon": "Garchomp vs Mewtwo",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Semifinal / final",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7702925190853938445": {
+  "format": "viewercup",
+  "label": "Viewer Cup 3rd place @daybreak.doll vs @fransqy17",
+  "pokemon": "Roserade vs Garchomp",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Semifinal / final",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7701766530845003021": {
+  "format": "raids",
+  "account": "pokepilot.raids",
+  "label": "How many Charmander to beat Charizard, EP 2",
+  "pokemon": "Charmander swarm vs Charizard"
+ },
+ "7701750663897697566": {
+  "format": "hill",
+  "account": "pokepilot.hill",
+  "label": "King of the Hill day 2: Cynthia vs Red (king holds)",
+  "pokemon": "Garchomp, Lucario, Milotic vs Venusaur, Blastoise, Snorlax"
+ },
+ "7702545725896297758": {
+  "format": "hill",
+  "account": "pokepilot.hill",
+  "label": "King of the Hill day 4: Cynthia vs Gary (king holds; first human_post post)",
+  "pokemon": "Garchomp, Lucario, Milotic vs Blastoise, Alakazam, Arcanine"
+ },
+ "7703219391223123213": {
+  "format": "guide",
+  "label": "Guide: Pokémon Diamond with only Piplup",
+  "traits": {
+   "Series": "Guide"
+  }
+ },
+ "7703590274664008974": {
+  "format": "guide",
+  "label": "Guide: Pokémon Diamond with only Chimchar",
+  "traits": {
+   "Series": "Guide"
+  }
+ },
+ "7703984448747900173": {
+  "format": "guide",
+  "label": "Guide: Pokémon Diamond with only Turtwig",
+  "traits": {
+   "Series": "Guide"
+  }
+ },
+ "7704424653833506078": {
+  "format": "guide",
+  "label": "Guide: Pokémon Diamond with only Eevee",
+  "traits": {
+   "Series": "Guide"
+  }
+ },
+ "7703312822121336077": {
+  "format": "viewercup",
+  "label": "Viewer Cup FINAL @kentswildafrica vs @jerome2245",
+  "pokemon": "Gengar, Charizard, Mewtwo vs Mewtwo, Snorlax, Steelix",
+  "traits": {
+   "Series": "Viewer Cup",
+   "Round": "Semifinal / final",
+   "Opening": "Fight at 0 s",
+   "Ask": "Freeze at 2nd K.O.",
+   "Ending": "Short",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7704053405483830541": {
+  "format": "animecup",
+  "label": "Anime Cup R16 M1: Dawn vs Lance (Lance wins)",
+  "pokemon": "Piplup, Pachirisu, Mamoswine, Togekiss, Lopunny vs Dragonair, Gyarados, Aerodactyl, Charizard, Kingdra",
+  "traits": {
+   "Series": "Anime Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Bracket intro",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7704769097807973645": {
+  "format": "animecup",
+  "label": "Anime Cup R16 M2: Misty vs May (Misty wins)",
+  "pokemon": "Psyduck, Politoed, Kingdra, Starmie, Gyarados vs Munchlax, Manaphy, Glaceon, Venusaur, Blaziken",
+  "traits": {
+   "Series": "Anime Cup",
+   "Round": "Cup round of 16",
+   "Opening": "Bracket intro",
+   "Ask": "End card",
+   "Ending": "Long",
+   "Cover lead": "Pokémon names"
+  }
+ },
+ "7703287212246437151": {
+  "format": "raids",
+  "account": "pokepilot.hill",
+  "label": "How many Dratini to beat Dragonite, EP 3",
+  "pokemon": "Dratini swarm vs Dragonite"
+ },
+ "7704738219316792606": {
+  "format": "hill",
+  "account": "pokepilot.hill",
+  "label": "King of the Hill day 5: Cynthia vs Steven",
+  "pokemon": "Garchomp, Lucario, Milotic vs Metagross, Aggron, Skarmory"
+ },
+ "7703270705999170830": {
+  "format": "shiny",
+  "account": "pokepilot.raids",
+  "label": "guess the shiny #1 (puzzle day 3)"
+ },
+ "7703645072415313166": {
+  "format": "triangle",
+  "account": "pokepilot.raids",
+  "label": "guess the pokémon #2 (puzzle day 4)"
+ },
+ "7704008724960054541": {
+  "format": "whos",
+  "account": "pokepilot.raids",
+  "label": "who's that pokémon #2 (puzzle day 5)"
+ },
+ "7704381302664924430": {
+  "format": "shiny",
+  "account": "pokepilot.raids",
+  "label": "guess the shiny #2 (puzzle day 6)"
+ },
+ "7704751481248877837": {
+  "format": "triangle",
+  "account": "pokepilot.raids",
+  "label": "4 paldea pokémon, guess the pokémon #3 (puzzle day 7)"
  }
 }
