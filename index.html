@@ -140,6 +140,11 @@
   <h2 id="vids-h">Videos</h2>
   <div class="table" id="vids"></div>
 
+  <h2 id="yt-h">YouTube Shorts</h2>
+  <p class="lede" id="yt-lede">Every TikTok post is cross-posted as a YouTube Short with its own music. Views and likes are checked hourly;
+    watch time, % viewed and new subscribers come from YouTube Analytics, which runs 1–3 days behind.</p>
+  <div class="table" id="yt"></div>
+
   <p class="note">Views, likes, comments, shares and followers are public numbers, checked hourly. Sources, retention, finish rate,
     average watch time and new followers per video come from TikTok Studio once a day at 7:30 PM, so the newest video can lag.
     Studio shows retention after a few days. “At 2 h” and “At 24 h” are a video’s views at that age, so new and old posts compare fairly.
@@ -498,6 +503,33 @@ function videoTable(list, a, ctx) {
   return el("table", {}, el("thead", {}, head), el("tbody", {}, ...rows));
 }
 
+// ---- YouTube Shorts (data/youtube.json, written by tools/stats/yt_track.py on the main PC) ----
+const YT_SLOT = { main: "pokepilot2", hill: "hill", raids: "raids" };
+let youtube = { channels: {}, shorts: [] };
+function ytSection(a) {
+  const slot = YT_SLOT[a.key], ch = youtube.channels?.[slot];
+  const list = (youtube.shorts || []).filter(s => s.slot === slot).sort((x, y) => y.posted.localeCompare(x.posted));
+  document.getElementById("yt-h").textContent = ch
+    ? `YouTube Shorts: ${ch.name}, ${fmtNum(ch.subscribers)} subscribers` + (youtube.at ? ` (updated ${ago(youtube.at)})` : "")
+    : "YouTube Shorts";
+  const box = document.getElementById("yt");
+  if (!list.length) { box.replaceChildren(el("p", { class: "empty", style: "padding:16px" }, "No Shorts on this channel yet.")); return; }
+  const head = el("tr", {}, ...["Short", "YouTube views", "TikTok views", "YouTube ÷ TikTok", "Likes", "Like rate", "% viewed", "Avg watch", "New subs"].map(h => el("th", {}, h)));
+  const cell = (x, cls = "") => el("td", { class: (x == null ? "na " : "") + cls }, x == null ? "–" : x);
+  const rows = list.map(s => el("tr", {},
+    el("td", {}, el("a", { href: "https://youtube.com/shorts/" + s.youtube, target: "_blank", rel: "noopener" }, s.name.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())),
+      el("div", { class: "sub" }, `posted ${ago(s.posted.replace(" ", "T"))}` + (s.tiktok ? " · " : ""),
+        s.tiktok ? el("a", { href: `https://www.tiktok.com/@${a.key === "main" ? "pokepilot2" : "pokepilot." + a.key}/video/${s.tiktok}`, target: "_blank", rel: "noopener" }, "TikTok") : "")),
+    cell(fmtNum(s.yt_views), "big"), cell(s.tt_views == null ? null : fmtNum(s.tt_views)),
+    cell(s.tt_views ? (s.yt_views / s.tt_views).toFixed(2) + "×" : null),
+    cell(fmtNum(s.yt_likes)), cell(s.yt_views ? (s.yt_likes / s.yt_views * 100).toFixed(1) + "%" : null),
+    cell(s.avg_pct == null ? null : Math.round(s.avg_pct) + "%"), cell(s.avg_watch_s == null ? null : s.avg_watch_s + " s"),
+    cell(s.subs_gained ?? null)));
+  box.replaceChildren(el("table", {}, el("thead", {}, head), el("tbody", {}, ...rows)));
+  if (ch && !ch.analytics) document.getElementById("yt-lede").textContent =
+    "Every TikTok post is cross-posted to GridIronCourt as a YouTube Short. Views and likes are checked hourly. This channel's login has no Analytics access, so watch time and % viewed aren't available.";
+}
+
 // ---- page ----
 async function show(key) {
   const a = ACCOUNTS.find(x => x.key === key) || ACCOUNTS[0];
@@ -519,6 +551,7 @@ async function show(key) {
     gains: Object.fromEntries(["views", "likes", "comments", "shares"].map(f => [f, gainsOf(snaps, f)])),
   };
   kpis(a, d, ctx); growth(a, d, ctx); sources(a, d); compare(a, d, ctx);
+  try { ytSection(a); } catch (e) { document.getElementById("yt").replaceChildren(el("p", { class: "empty", style: "padding:16px" }, "Couldn’t load the YouTube stats.")); }
 
   const vids = scope(a, d);
   document.getElementById("vids-h").textContent = `Videos, last 14 days (${vids.length})`;
@@ -528,7 +561,8 @@ async function show(key) {
 let resizeT, current = "main";
 addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(() => show(current), 200); });
 (async () => {
-  [meta, studio] = await Promise.all([get("videos.json", {}), get("data/studio.json", { accounts: {}, videos: {} })]);
+  [meta, studio, youtube] = await Promise.all([get("videos.json", {}), get("data/studio.json", { accounts: {}, videos: {} }),
+    get("data/youtube.json", { channels: {}, shorts: [] })]);
   const tabs = document.getElementById("tabs");
   for (const a of ACCOUNTS) {
     const b = el("button", { role: "tab", "data-key": a.key, "aria-selected": "false" }, a.label);
