@@ -1,5 +1,5 @@
 {
- "at": "2026-11-09T22:40:01+00:00",
+ "at": "2026-11-09T23:40:01+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
@@ -30,11 +30,11 @@
    "posted": "2026-11-08 00:53",
    "youtube": "CCIP-nSPqV0",
    "privacy": "public",
-   "yt_views": 1112,
+   "yt_views": 1116,
    "yt_likes": 27,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4295,
+   "tt_views": 4299,
    "tt_likes": 72,
    "watch_min": 0,
    "avg_watch_s": 0,
@@ -49,11 +49,11 @@
    "posted": "2026-11-08 09:23",
    "youtube": "wkwN0wDlXOg",
    "privacy": "public",
-   "yt_views": 1221,
-   "yt_likes": 29,
+   "yt_views": 1226,
+   "yt_likes": 30,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 1882,
+   "tt_views": 1885,
    "tt_likes": 28
   },
   {
@@ -62,12 +62,12 @@
    "posted": "2026-11-09 09:23",
    "youtube": "nV7Hl0EXTT4",
    "privacy": "public",
-   "yt_views": 3,
+   "yt_views": 6,
    "yt_likes": 0,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 537,
-   "tt_likes": 21
+   "tt_views": 568,
+   "tt_likes": 22
   },
   {
    "name": "quiz_d10",
@@ -79,8 +79,8 @@
    "yt_likes": 14,
    "yt_comments": 3,
    "tiktok": "7705838809266638094",
-   "tt_views": 760,
-   "tt_likes": 20
+   "tt_views": 768,
+   "tt_likes": 21
   },
   {
    "name": "hill_raids_ep5",
@@ -88,7 +88,7 @@
    "posted": "2026-11-08 10:23",
    "youtube": "aqoFqqqbU6k",
    "privacy": "public",
-   "yt_views": 1172,
+   "yt_views": 1174,
    "yt_likes": 13,
    "yt_comments": 3,
    "tiktok": "7705846422184234271",
@@ -101,11 +101,11 @@
    "posted": "2026-11-09 13:23",
    "youtube": "eh1ChAzzcoo",
    "privacy": "public",
-   "yt_views": 236,
-   "yt_likes": 2,
+   "yt_views": 418,
+   "yt_likes": 7,
    "yt_comments": 0,
    "tiktok": "7706265327784480031",
-   "tt_views": 100,
+   "tt_views": 115,
    "tt_likes": 0
   }
  ]
