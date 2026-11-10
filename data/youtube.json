@@ -1,5 +1,5 @@
 {
- "at": "2026-11-10T19:40:01+00:00",
+ "at": "2026-11-10T20:40:03+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
@@ -34,7 +34,7 @@
    "yt_likes": 28,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4342,
+   "tt_views": 4348,
    "tt_likes": 72,
    "watch_min": 0,
    "avg_watch_s": 0,
@@ -53,7 +53,7 @@
    "yt_likes": 31,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 2027,
+   "tt_views": 2036,
    "tt_likes": 29
   },
   {
@@ -62,11 +62,11 @@
    "posted": "2026-11-09 09:23",
    "youtube": "nV7Hl0EXTT4",
    "privacy": "public",
-   "yt_views": 206,
-   "yt_likes": 8,
+   "yt_views": 251,
+   "yt_likes": 9,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 900,
+   "tt_views": 909,
    "tt_likes": 32
   },
   {
@@ -75,12 +75,12 @@
    "posted": "2026-11-10 09:23",
    "youtube": "nCknxUMZUVs",
    "privacy": "public",
-   "yt_views": 517,
-   "yt_likes": 22,
+   "yt_views": 659,
+   "yt_likes": 25,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 615,
-   "tt_likes": 6
+   "tt_views": 922,
+   "tt_likes": 9
   },
   {
    "name": "quiz_d10",
@@ -101,11 +101,11 @@
    "posted": "2026-11-10 09:53",
    "youtube": "4FxfDcIQZGU",
    "privacy": "public",
-   "yt_views": 504,
-   "yt_likes": 11,
+   "yt_views": 635,
+   "yt_likes": 14,
    "yt_comments": 0,
    "tiktok": "7706579276597873934",
-   "tt_views": 44,
+   "tt_views": 47,
    "tt_likes": 1
   },
   {
@@ -114,11 +114,11 @@
    "posted": "2026-11-08 10:23",
    "youtube": "aqoFqqqbU6k",
    "privacy": "public",
-   "yt_views": 1247,
+   "yt_views": 1252,
    "yt_likes": 14,
    "yt_comments": 3,
    "tiktok": "7705846422184234271",
-   "tt_views": 306,
+   "tt_views": 307,
    "tt_likes": 16
   },
   {
@@ -131,7 +131,7 @@
    "yt_likes": 24,
    "yt_comments": 0,
    "tiktok": "7706265327784480031",
-   "tt_views": 277,
+   "tt_views": 280,
    "tt_likes": 9
   },
   {
@@ -140,12 +140,12 @@
    "posted": "2026-11-10 11:23",
    "youtube": "-OP9k9ddUOw",
    "privacy": "public",
-   "yt_views": 40,
+   "yt_views": 52,
    "yt_likes": 0,
    "yt_comments": 0,
    "tiktok": "7706597929091419422",
-   "tt_views": 181,
-   "tt_likes": 6
+   "tt_views": 247,
+   "tt_likes": 7
   }
  ]
 }
