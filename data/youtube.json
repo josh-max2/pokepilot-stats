@@ -1,10 +1,10 @@
 {
- "at": "2026-11-10T04:40:01+00:00",
+ "at": "2026-11-10T05:40:01+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
    "subscribers": 19,
-   "views": 2319,
+   "views": 2342,
    "videos": 3,
    "analytics": true
   },
@@ -17,8 +17,8 @@
   },
   "hill": {
    "name": "GridIronCourt (Hill)",
-   "subscribers": 20,
-   "views": 14302,
+   "subscribers": 21,
+   "views": 14311,
    "videos": 29,
    "analytics": false
   }
@@ -30,7 +30,7 @@
    "posted": "2026-11-08 00:53",
    "youtube": "CCIP-nSPqV0",
    "privacy": "public",
-   "yt_views": 1119,
+   "yt_views": 1118,
    "yt_likes": 27,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
@@ -53,8 +53,8 @@
    "yt_likes": 30,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 1918,
-   "tt_likes": 28
+   "tt_views": 1931,
+   "tt_likes": 29
   },
   {
    "name": "cup_r6",
@@ -62,11 +62,11 @@
    "posted": "2026-11-09 09:23",
    "youtube": "nV7Hl0EXTT4",
    "privacy": "public",
-   "yt_views": 8,
+   "yt_views": 10,
    "yt_likes": 0,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 631,
+   "tt_views": 642,
    "tt_likes": 27
   },
   {
@@ -79,7 +79,7 @@
    "yt_likes": 14,
    "yt_comments": 3,
    "tiktok": "7705838809266638094",
-   "tt_views": 774,
+   "tt_views": 778,
    "tt_likes": 21
   },
   {
@@ -101,12 +101,12 @@
    "posted": "2026-11-09 13:23",
    "youtube": "eh1ChAzzcoo",
    "privacy": "public",
-   "yt_views": 1081,
+   "yt_views": 1087,
    "yt_likes": 24,
    "yt_comments": 0,
    "tiktok": "7706265327784480031",
-   "tt_views": 221,
-   "tt_likes": 6
+   "tt_views": 244,
+   "tt_likes": 8
   }
  ]
 }
