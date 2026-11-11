@@ -1,5 +1,5 @@
 {
- "at": "2026-11-11T10:40:02+00:00",
+ "at": "2026-11-11T11:40:01+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
@@ -18,7 +18,7 @@
   "hill": {
    "name": "GridIronCourt (Hill)",
    "subscribers": 23,
-   "views": 15547,
+   "views": 14311,
    "videos": 30,
    "analytics": false
   }
@@ -30,11 +30,11 @@
    "posted": "2026-11-08 00:53",
    "youtube": "CCIP-nSPqV0",
    "privacy": "public",
-   "yt_views": 1196,
+   "yt_views": 1207,
    "yt_likes": 29,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4378,
+   "tt_views": 4382,
    "tt_likes": 72,
    "watch_min": 426,
    "avg_watch_s": 38,
@@ -49,11 +49,11 @@
    "posted": "2026-11-08 09:23",
    "youtube": "wkwN0wDlXOg",
    "privacy": "public",
-   "yt_views": 1410,
+   "yt_views": 1414,
    "yt_likes": 36,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 2132,
+   "tt_views": 2140,
    "tt_likes": 34,
    "watch_min": 515,
    "avg_watch_s": 38,
@@ -68,11 +68,11 @@
    "posted": "2026-11-09 09:23",
    "youtube": "nV7Hl0EXTT4",
    "privacy": "public",
-   "yt_views": 859,
+   "yt_views": 861,
    "yt_likes": 20,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 971,
+   "tt_views": 979,
    "tt_likes": 36
   },
   {
@@ -81,12 +81,12 @@
    "posted": "2026-11-10 09:23",
    "youtube": "nCknxUMZUVs",
    "privacy": "public",
-   "yt_views": 1235,
-   "yt_likes": 32,
+   "yt_views": 1281,
+   "yt_likes": 33,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 3693,
-   "tt_likes": 56
+   "tt_views": 3946,
+   "tt_likes": 62
   },
   {
    "name": "quiz_d10",
@@ -126,7 +126,7 @@
    "posted": "2026-11-08 10:23",
    "youtube": "aqoFqqqbU6k",
    "privacy": "public",
-   "yt_views": 1266,
+   "yt_views": 1267,
    "yt_likes": 14,
    "yt_comments": 3,
    "tiktok": "7705846422184234271",
@@ -156,7 +156,7 @@
    "yt_likes": 13,
    "yt_comments": 0,
    "tiktok": "7706597929091419422",
-   "tt_views": 309,
+   "tt_views": 310,
    "tt_likes": 9
   }
  ]
