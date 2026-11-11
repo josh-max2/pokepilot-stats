@@ -1,18 +1,18 @@
 {
- "at": "2026-11-11T16:40:01+00:00",
+ "at": "2026-11-11T17:40:02+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
-   "subscribers": 28,
+   "subscribers": 29,
    "views": 4764,
-   "videos": 4,
+   "videos": 5,
    "analytics": true
   },
   "raids": {
    "name": "How Many to Beat?",
    "subscribers": 23,
    "views": 1293,
-   "videos": 2,
+   "videos": 3,
    "analytics": true
   },
   "hill": {
@@ -30,11 +30,11 @@
    "posted": "2026-11-08 00:53",
    "youtube": "CCIP-nSPqV0",
    "privacy": "public",
-   "yt_views": 1207,
+   "yt_views": 1212,
    "yt_likes": 29,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4407,
+   "tt_views": 4420,
    "tt_likes": 72,
    "watch_min": 426,
    "avg_watch_s": 38,
@@ -49,11 +49,11 @@
    "posted": "2026-11-08 09:23",
    "youtube": "wkwN0wDlXOg",
    "privacy": "public",
-   "yt_views": 1431,
+   "yt_views": 1440,
    "yt_likes": 36,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 2181,
+   "tt_views": 2195,
    "tt_likes": 34,
    "watch_min": 515,
    "avg_watch_s": 38,
@@ -68,11 +68,11 @@
    "posted": "2026-11-09 09:23",
    "youtube": "nV7Hl0EXTT4",
    "privacy": "public",
-   "yt_views": 921,
-   "yt_likes": 24,
+   "yt_views": 933,
+   "yt_likes": 23,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 1008,
+   "tt_views": 1024,
    "tt_likes": 36
   },
   {
@@ -81,12 +81,25 @@
    "posted": "2026-11-10 09:23",
    "youtube": "nCknxUMZUVs",
    "privacy": "public",
-   "yt_views": 1293,
+   "yt_views": 1298,
    "yt_likes": 33,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 6218,
-   "tt_likes": 85
+   "tt_views": 6469,
+   "tt_likes": 90
+  },
+  {
+   "name": "cup_r8",
+   "slot": "pokepilot2",
+   "posted": "2026-11-11 09:53",
+   "youtube": "cWTypfHE2TM",
+   "privacy": "public",
+   "yt_views": 38,
+   "yt_likes": 2,
+   "yt_comments": 0,
+   "tiktok": "7706950450553130253",
+   "tt_views": 136,
+   "tt_likes": 2
   },
   {
    "name": "quiz_d10",
@@ -121,6 +134,19 @@
    "tt_likes": 1
   },
   {
+   "name": "quiz_d13",
+   "slot": "raids",
+   "posted": "2026-11-11 09:56",
+   "youtube": "axtl6yBYjnE",
+   "privacy": "public",
+   "yt_views": 28,
+   "yt_likes": 0,
+   "yt_comments": 0,
+   "tiktok": "7706949619200036110",
+   "tt_views": 108,
+   "tt_likes": 1
+  },
+  {
    "name": "hill_raids_ep5",
    "slot": "hill",
    "posted": "2026-11-08 10:23",
@@ -139,7 +165,7 @@
    "posted": "2026-11-09 13:23",
    "youtube": "eh1ChAzzcoo",
    "privacy": "public",
-   "yt_views": 1274,
+   "yt_views": 1288,
    "yt_likes": 25,
    "yt_comments": 0,
    "tiktok": "7706265327784480031",
