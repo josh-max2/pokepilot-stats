@@ -1,10 +1,10 @@
 {
- "at": "2026-11-11T15:40:01+00:00",
+ "at": "2026-11-11T16:40:01+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
    "subscribers": 28,
-   "views": 2919,
+   "views": 4764,
    "videos": 4,
    "analytics": true
   },
@@ -34,7 +34,7 @@
    "yt_likes": 29,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4406,
+   "tt_views": 4407,
    "tt_likes": 72,
    "watch_min": 426,
    "avg_watch_s": 38,
@@ -53,7 +53,7 @@
    "yt_likes": 36,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 2174,
+   "tt_views": 2181,
    "tt_likes": 34,
    "watch_min": 515,
    "avg_watch_s": 38,
@@ -68,11 +68,11 @@
    "posted": "2026-11-09 09:23",
    "youtube": "nV7Hl0EXTT4",
    "privacy": "public",
-   "yt_views": 905,
+   "yt_views": 921,
    "yt_likes": 24,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 1003,
+   "tt_views": 1008,
    "tt_likes": 36
   },
   {
@@ -85,8 +85,8 @@
    "yt_likes": 33,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 6080,
-   "tt_likes": 81
+   "tt_views": 6218,
+   "tt_likes": 85
   },
   {
    "name": "quiz_d10",
@@ -143,7 +143,7 @@
    "yt_likes": 25,
    "yt_comments": 0,
    "tiktok": "7706265327784480031",
-   "tt_views": 301,
+   "tt_views": 303,
    "tt_likes": 9
   },
   {
@@ -152,11 +152,11 @@
    "posted": "2026-11-10 11:23",
    "youtube": "-OP9k9ddUOw",
    "privacy": "public",
-   "yt_views": 653,
+   "yt_views": 657,
    "yt_likes": 13,
    "yt_comments": 0,
    "tiktok": "7706597929091419422",
-   "tt_views": 319,
+   "tt_views": 320,
    "tt_likes": 9
   }
  ]
