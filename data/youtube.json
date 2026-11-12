@@ -1,5 +1,5 @@
 {
- "at": "2026-11-12T17:40:02+00:00",
+ "at": "2026-11-12T18:40:02+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
@@ -19,7 +19,7 @@
    "name": "GridIronCourt (Hill)",
    "subscribers": 24,
    "views": 16789,
-   "videos": 31,
+   "videos": 32,
    "analytics": false
   }
  },
@@ -30,11 +30,11 @@
    "posted": "2026-11-08 00:53",
    "youtube": "CCIP-nSPqV0",
    "privacy": "public",
-   "yt_views": 1234,
+   "yt_views": 1233,
    "yt_likes": 30,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4482,
+   "tt_views": 4484,
    "tt_likes": 75,
    "watch_min": 436,
    "avg_watch_s": 38,
@@ -49,7 +49,7 @@
    "posted": "2026-11-08 09:23",
    "youtube": "wkwN0wDlXOg",
    "privacy": "public",
-   "yt_views": 1522,
+   "yt_views": 1527,
    "yt_likes": 38,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
@@ -72,7 +72,7 @@
    "yt_likes": 23,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 1103,
+   "tt_views": 1107,
    "tt_likes": 39,
    "watch_min": 2,
    "avg_watch_s": 28,
@@ -91,8 +91,8 @@
    "yt_likes": 35,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 7534,
-   "tt_likes": 103
+   "tt_views": 7592,
+   "tt_likes": 104
   },
   {
    "name": "cup_r8",
@@ -100,11 +100,11 @@
    "posted": "2026-11-11 09:53",
    "youtube": "cWTypfHE2TM",
    "privacy": "public",
-   "yt_views": 821,
+   "yt_views": 831,
    "yt_likes": 17,
    "yt_comments": 1,
    "tiktok": "7706950450553130253",
-   "tt_views": 534,
+   "tt_views": 543,
    "tt_likes": 14
   },
   {
@@ -113,12 +113,12 @@
    "posted": "2026-11-12 09:23",
    "youtube": "mWdGAyrhZBY",
    "privacy": "public",
-   "yt_views": 181,
-   "yt_likes": 4,
+   "yt_views": 246,
+   "yt_likes": 5,
    "yt_comments": 1,
    "tiktok": "7707317272096017678",
-   "tt_views": 184,
-   "tt_likes": 4
+   "tt_views": 343,
+   "tt_likes": 13
   },
   {
    "name": "quiz_d10",
@@ -175,7 +175,7 @@
    "yt_likes": 15,
    "yt_comments": 3,
    "tiktok": "7705846422184234271",
-   "tt_views": 315,
+   "tt_views": 316,
    "tt_likes": 16
   },
   {
@@ -188,7 +188,7 @@
    "yt_likes": 25,
    "yt_comments": 0,
    "tiktok": "7706265327784480031",
-   "tt_views": 306,
+   "tt_views": 307,
    "tt_likes": 9
   },
   {
@@ -197,11 +197,11 @@
    "posted": "2026-11-10 11:23",
    "youtube": "-OP9k9ddUOw",
    "privacy": "public",
-   "yt_views": 796,
+   "yt_views": 797,
    "yt_likes": 17,
    "yt_comments": 0,
    "tiktok": "7706597929091419422",
-   "tt_views": 331,
+   "tt_views": 333,
    "tt_likes": 10
   },
   {
@@ -210,12 +210,25 @@
    "posted": "2026-11-11 10:53",
    "youtube": "rXNyrtL3fBo",
    "privacy": "public",
-   "yt_views": 270,
+   "yt_views": 271,
    "yt_likes": 7,
    "yt_comments": 1,
    "tiktok": "7706970585582046494",
-   "tt_views": 360,
+   "tt_views": 361,
    "tt_likes": 13
+  },
+  {
+   "name": "hill_raids_ep7",
+   "slot": "hill",
+   "posted": "2026-11-12 11:23",
+   "youtube": "Yr_rZlGabAI",
+   "privacy": "public",
+   "yt_views": 10,
+   "yt_likes": 0,
+   "yt_comments": 0,
+   "tiktok": "7707343187760680222",
+   "tt_views": 90,
+   "tt_likes": 0
   }
  ]
 }
