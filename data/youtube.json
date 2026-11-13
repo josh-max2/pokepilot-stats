@@ -1,5 +1,5 @@
 {
- "at": "2026-11-13T16:40:02+00:00",
+ "at": "2026-11-13T17:40:02+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
@@ -11,8 +11,8 @@
   "raids": {
    "name": "How Many to Beat?",
    "subscribers": 23,
-   "views": 4024,
-   "videos": 3,
+   "views": 4052,
+   "videos": 4,
    "analytics": true
   },
   "hill": {
@@ -91,7 +91,7 @@
    "yt_likes": 37,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 8243,
+   "tt_views": 8246,
    "tt_likes": 111,
    "watch_min": 547,
    "avg_watch_s": 45,
@@ -110,7 +110,7 @@
    "yt_likes": 20,
    "yt_comments": 1,
    "tiktok": "7706950450553130253",
-   "tt_views": 617,
+   "tt_views": 621,
    "tt_likes": 16
   },
   {
@@ -123,7 +123,7 @@
    "yt_likes": 9,
    "yt_comments": 4,
    "tiktok": "7707317272096017678",
-   "tt_views": 1157,
+   "tt_views": 1168,
    "tt_likes": 23
   },
   {
@@ -136,8 +136,8 @@
    "yt_likes": 0,
    "yt_comments": 0,
    "tiktok": "7707688873865825550",
-   "tt_views": 51,
-   "tt_likes": 1
+   "tt_views": 159,
+   "tt_likes": 8
   },
   {
    "name": "quiz_d10",
@@ -189,6 +189,19 @@
    "tiktok": "7706949619200036110",
    "tt_views": 477,
    "tt_likes": 17
+  },
+  {
+   "name": "quiz_d15",
+   "slot": "raids",
+   "posted": "2026-11-13 09:53",
+   "youtube": "23bqLHaYCGs",
+   "privacy": "public",
+   "yt_views": 38,
+   "yt_likes": 0,
+   "yt_comments": 0,
+   "tiktok": "7707320034632289549",
+   "tt_views": null,
+   "tt_likes": null
   },
   {
    "name": "hill_raids_ep5",
