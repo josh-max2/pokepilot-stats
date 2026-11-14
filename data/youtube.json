@@ -1,17 +1,17 @@
 {
- "at": "2026-11-14T19:40:01+00:00",
+ "at": "2026-11-14T20:40:01+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
    "subscribers": 39,
-   "views": 6978,
+   "views": 7280,
    "videos": 8,
    "analytics": true
   },
   "raids": {
    "name": "How Many to Beat?",
    "subscribers": 26,
-   "views": 4380,
+   "views": 5863,
    "videos": 6,
    "analytics": true
   },
@@ -34,7 +34,7 @@
    "yt_likes": 31,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4569,
+   "tt_views": 4573,
    "tt_likes": 76,
    "watch_min": 475,
    "avg_watch_s": 38,
@@ -53,7 +53,7 @@
    "yt_likes": 39,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 2391,
+   "tt_views": 2399,
    "tt_likes": 36,
    "watch_min": 700,
    "avg_watch_s": 43,
@@ -72,7 +72,7 @@
    "yt_likes": 24,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 1294,
+   "tt_views": 1299,
    "tt_likes": 44,
    "watch_min": 423,
    "avg_watch_s": 40,
@@ -91,7 +91,7 @@
    "yt_likes": 38,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 8587,
+   "tt_views": 8603,
    "tt_likes": 112,
    "watch_min": 573,
    "avg_watch_s": 45,
@@ -110,7 +110,7 @@
    "yt_likes": 22,
    "yt_comments": 1,
    "tiktok": "7706950450553130253",
-   "tt_views": 742,
+   "tt_views": 755,
    "tt_likes": 17,
    "watch_min": 255,
    "avg_watch_s": 34,
@@ -129,7 +129,7 @@
    "yt_likes": 18,
    "yt_comments": 5,
    "tiktok": "7707317272096017678",
-   "tt_views": 1448,
+   "tt_views": 1474,
    "tt_likes": 29
   },
   {
@@ -138,12 +138,12 @@
    "posted": "2026-11-13 09:23",
    "youtube": "o2tTak3EXc8",
    "privacy": "public",
-   "yt_views": 622,
-   "yt_likes": 14,
+   "yt_views": 727,
+   "yt_likes": 9,
    "yt_comments": 2,
    "tiktok": "7707688873865825550",
-   "tt_views": 3832,
-   "tt_likes": 76
+   "tt_views": 3900,
+   "tt_likes": 77
   },
   {
    "name": "cup_qf3",
@@ -151,12 +151,12 @@
    "posted": "2026-11-14 09:23",
    "youtube": "1IWcUJJNkZk",
    "privacy": "public",
-   "yt_views": 1006,
+   "yt_views": 1288,
    "yt_likes": 24,
-   "yt_comments": 1,
+   "yt_comments": 2,
    "tiktok": "7708062421922974990",
-   "tt_views": 2670,
-   "tt_likes": 53
+   "tt_views": 4510,
+   "tt_likes": 79
   },
   {
    "name": "quiz_d10",
@@ -221,7 +221,7 @@
    "posted": "2026-11-13 09:53",
    "youtube": "23bqLHaYCGs",
    "privacy": "public",
-   "yt_views": 791,
+   "yt_views": 788,
    "yt_likes": 10,
    "yt_comments": 1,
    "tiktok": "7707320034632289549",
@@ -247,11 +247,11 @@
    "posted": "2026-11-14 09:53",
    "youtube": "bzPhzvHmtI8",
    "privacy": "public",
-   "yt_views": 582,
-   "yt_likes": 6,
+   "yt_views": 760,
+   "yt_likes": 11,
    "yt_comments": 0,
    "tiktok": "7708064285922004237",
-   "tt_views": 60,
+   "tt_views": 63,
    "tt_likes": 1
   },
   {
@@ -264,7 +264,7 @@
    "yt_likes": 15,
    "yt_comments": 3,
    "tiktok": "7705846422184234271",
-   "tt_views": 320,
+   "tt_views": 322,
    "tt_likes": 16
   },
   {
@@ -277,7 +277,7 @@
    "yt_likes": 25,
    "yt_comments": 0,
    "tiktok": "7706265327784480031",
-   "tt_views": 310,
+   "tt_views": 311,
    "tt_likes": 9
   },
   {
@@ -312,7 +312,7 @@
    "posted": "2026-11-12 11:23",
    "youtube": "Yr_rZlGabAI",
    "privacy": "public",
-   "yt_views": 164,
+   "yt_views": 171,
    "yt_likes": 4,
    "yt_comments": 0,
    "tiktok": "7707343187760680222",
@@ -325,11 +325,11 @@
    "posted": "2026-11-13 10:53",
    "youtube": "znhpdPCLVKc",
    "privacy": "public",
-   "yt_views": 1187,
+   "yt_views": 1199,
    "yt_likes": 26,
    "yt_comments": 1,
    "tiktok": "7707715021979012383",
-   "tt_views": 494,
+   "tt_views": 496,
    "tt_likes": 22
   },
   {
@@ -338,12 +338,12 @@
    "posted": "2026-11-14 12:23",
    "youtube": "jD2mRcXsx18",
    "privacy": "public",
-   "yt_views": 58,
-   "yt_likes": 0,
+   "yt_views": 180,
+   "yt_likes": 1,
    "yt_comments": 0,
    "tiktok": "7708108335039384863",
-   "tt_views": null,
-   "tt_likes": null
+   "tt_views": 160,
+   "tt_likes": 4
   }
  ]
 }
