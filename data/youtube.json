@@ -1,5 +1,5 @@
 {
- "at": "2026-11-14T06:40:02+00:00",
+ "at": "2026-11-14T07:40:02+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
@@ -53,7 +53,7 @@
    "yt_likes": 39,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 2349,
+   "tt_views": 2350,
    "tt_likes": 35,
    "watch_min": 700,
    "avg_watch_s": 43,
@@ -68,7 +68,7 @@
    "posted": "2026-11-09 09:23",
    "youtube": "nV7Hl0EXTT4",
    "privacy": "public",
-   "yt_views": 1050,
+   "yt_views": 1048,
    "yt_likes": 23,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
@@ -91,7 +91,7 @@
    "yt_likes": 38,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 8441,
+   "tt_views": 8444,
    "tt_likes": 112,
    "watch_min": 573,
    "avg_watch_s": 45,
@@ -110,7 +110,7 @@
    "yt_likes": 22,
    "yt_comments": 1,
    "tiktok": "7706950450553130253",
-   "tt_views": 680,
+   "tt_views": 682,
    "tt_likes": 17,
    "watch_min": 255,
    "avg_watch_s": 34,
@@ -125,11 +125,11 @@
    "posted": "2026-11-12 09:23",
    "youtube": "mWdGAyrhZBY",
    "privacy": "public",
-   "yt_views": 776,
+   "yt_views": 779,
    "yt_likes": 15,
    "yt_comments": 5,
    "tiktok": "7707317272096017678",
-   "tt_views": 1325,
+   "tt_views": 1331,
    "tt_likes": 26
   },
   {
@@ -138,12 +138,12 @@
    "posted": "2026-11-13 09:23",
    "youtube": "o2tTak3EXc8",
    "privacy": "public",
-   "yt_views": 36,
+   "yt_views": 47,
    "yt_likes": 1,
    "yt_comments": 0,
    "tiktok": "7707688873865825550",
-   "tt_views": 2316,
-   "tt_likes": 56
+   "tt_views": 2369,
+   "tt_likes": 58
   },
   {
    "name": "quiz_d10",
@@ -221,8 +221,8 @@
    "posted": "2026-11-13 15:23",
    "youtube": "lz_wcG_5PKc",
    "privacy": "public",
-   "yt_views": 1088,
-   "yt_likes": 16,
+   "yt_views": 1118,
+   "yt_likes": 17,
    "yt_comments": 1,
    "tiktok": "7707320034632289549",
    "tt_views": null,
@@ -286,7 +286,7 @@
    "posted": "2026-11-12 11:23",
    "youtube": "Yr_rZlGabAI",
    "privacy": "public",
-   "yt_views": 140,
+   "yt_views": 134,
    "yt_likes": 3,
    "yt_comments": 0,
    "tiktok": "7707343187760680222",
@@ -303,7 +303,7 @@
    "yt_likes": 24,
    "yt_comments": 1,
    "tiktok": "7707715021979012383",
-   "tt_views": 433,
+   "tt_views": 443,
    "tt_likes": 22
   }
  ]
