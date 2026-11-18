@@ -1,23 +1,23 @@
 {
- "at": "2026-11-18T16:40:02+00:00",
+ "at": "2026-11-18T17:40:02+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
-   "subscribers": 52,
+   "subscribers": 53,
    "views": 13718,
    "videos": 11,
    "analytics": true
   },
   "raids": {
    "name": "How Many to Beat?",
-   "subscribers": 37,
+   "subscribers": 36,
    "views": 14700,
    "videos": 14,
    "analytics": true
   },
   "hill": {
    "name": "GridIronCourt (Hill)",
-   "subscribers": 34,
+   "subscribers": 36,
    "views": 21650,
    "videos": 38,
    "analytics": false
@@ -30,11 +30,11 @@
    "posted": "2026-11-08 00:53",
    "youtube": "CCIP-nSPqV0",
    "privacy": "public",
-   "yt_views": 1305,
-   "yt_likes": 31,
+   "yt_views": 1307,
+   "yt_likes": 32,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4882,
+   "tt_views": 4888,
    "tt_likes": 83,
    "watch_min": 496,
    "avg_watch_s": 38,
@@ -53,7 +53,7 @@
    "yt_likes": 40,
    "yt_comments": 2,
    "tiktok": "7705835004332494094",
-   "tt_views": 2703,
+   "tt_views": 2707,
    "tt_likes": 43,
    "watch_min": 724,
    "avg_watch_s": 43,
@@ -72,7 +72,7 @@
    "yt_likes": 27,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 1589,
+   "tt_views": 1595,
    "tt_likes": 54,
    "watch_min": 456,
    "avg_watch_s": 41,
@@ -91,7 +91,7 @@
    "yt_likes": 40,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 9551,
+   "tt_views": 9564,
    "tt_likes": 130,
    "watch_min": 640,
    "avg_watch_s": 44,
@@ -110,7 +110,7 @@
    "yt_likes": 23,
    "yt_comments": 1,
    "tiktok": "7706950450553130253",
-   "tt_views": 1216,
+   "tt_views": 1223,
    "tt_likes": 25,
    "watch_min": 347,
    "avg_watch_s": 36,
@@ -129,7 +129,7 @@
    "yt_likes": 25,
    "yt_comments": 5,
    "tiktok": "7707317272096017678",
-   "tt_views": 2236,
+   "tt_views": 2247,
    "tt_likes": 38,
    "watch_min": 330,
    "avg_watch_s": 32,
@@ -148,7 +148,7 @@
    "yt_likes": 17,
    "yt_comments": 2,
    "tiktok": "7707688873865825550",
-   "tt_views": 5871,
+   "tt_views": 5888,
    "tt_likes": 119,
    "watch_min": 549,
    "avg_watch_s": 38,
@@ -167,8 +167,8 @@
    "yt_likes": 46,
    "yt_comments": 2,
    "tiktok": "7708062421922974990",
-   "tt_views": 13600,
-   "tt_likes": 305,
+   "tt_views": 13700,
+   "tt_likes": 310,
    "watch_min": 705,
    "avg_watch_s": 39,
    "avg_pct": 38.63,
@@ -186,8 +186,8 @@
    "yt_likes": 33,
    "yt_comments": 4,
    "tiktok": "7708432434290806030",
-   "tt_views": 12900,
-   "tt_likes": 280,
+   "tt_views": 13100,
+   "tt_likes": 290,
    "watch_min": 660,
    "avg_watch_s": 44,
    "avg_pct": 47.31,
@@ -201,12 +201,12 @@
    "posted": "2026-11-16 09:53",
    "youtube": "RpcGzp4S5RE",
    "privacy": "public",
-   "yt_views": 1253,
-   "yt_likes": 38,
+   "yt_views": 1260,
+   "yt_likes": 39,
    "yt_comments": 2,
    "tiktok": "7708806650769067294",
-   "tt_views": 26100,
-   "tt_likes": 762
+   "tt_views": 26600,
+   "tt_likes": 782
   },
   {
    "name": "guide_cynthia",
@@ -214,11 +214,11 @@
    "posted": "2026-11-17 09:23",
    "youtube": "5PEY86bshmM",
    "privacy": "public",
-   "yt_views": 4278,
-   "yt_likes": 150,
-   "yt_comments": 6,
+   "yt_views": 5103,
+   "yt_likes": 163,
+   "yt_comments": 8,
    "tiktok": "7709174117118840078",
-   "tt_views": 1686,
+   "tt_views": 1698,
    "tt_likes": 29
   },
   {
@@ -284,7 +284,7 @@
    "posted": "2026-11-13 09:53",
    "youtube": "23bqLHaYCGs",
    "privacy": "public",
-   "yt_views": 1260,
+   "yt_views": 1262,
    "yt_likes": 16,
    "yt_comments": 1,
    "tiktok": "7707320034632289549",
@@ -341,7 +341,7 @@
    "posted": "2026-11-14 15:23",
    "youtube": "fnYdKF2yluo",
    "privacy": "public",
-   "yt_views": 1312,
+   "yt_views": 1315,
    "yt_likes": 19,
    "yt_comments": 0,
    "tiktok": "7708151660996005133",
@@ -360,7 +360,7 @@
    "posted": "2026-11-15 10:23",
    "youtube": "RLNE_nSVVgY",
    "privacy": "public",
-   "yt_views": 1352,
+   "yt_views": 1351,
    "yt_likes": 18,
    "yt_comments": 3,
    "tiktok": "7708443434406661390",
@@ -398,7 +398,7 @@
    "posted": "2026-11-16 09:53",
    "youtube": "A0f0dXyS1kU",
    "privacy": "public",
-   "yt_views": 1600,
+   "yt_views": 1597,
    "yt_likes": 22,
    "yt_comments": 3,
    "tiktok": "7708805774687898893",
@@ -438,10 +438,10 @@
    "youtube": "T-IArKjI_ns",
    "privacy": "public",
    "yt_views": 1025,
-   "yt_likes": 17,
+   "yt_likes": 18,
    "yt_comments": 0,
    "tiktok": "7709266809265900813",
-   "tt_views": 400,
+   "tt_views": 408,
    "tt_likes": 16
   },
   {
@@ -454,8 +454,8 @@
    "yt_likes": 0,
    "yt_comments": 0,
    "tiktok": "7709547048017693966",
-   "tt_views": null,
-   "tt_likes": null
+   "tt_views": 131,
+   "tt_likes": 0
   },
   {
    "name": "hill_raids_ep5",
@@ -519,7 +519,7 @@
    "yt_likes": 4,
    "yt_comments": 0,
    "tiktok": "7707343187760680222",
-   "tt_views": 309,
+   "tt_views": 310,
    "tt_likes": 13
   },
   {
@@ -541,11 +541,11 @@
    "posted": "2026-11-14 12:23",
    "youtube": "jD2mRcXsx18",
    "privacy": "public",
-   "yt_views": 1269,
+   "yt_views": 1274,
    "yt_likes": 22,
    "yt_comments": 3,
    "tiktok": "7708108335039384863",
-   "tt_views": 361,
+   "tt_views": 362,
    "tt_likes": 9
   },
   {
@@ -558,7 +558,7 @@
    "yt_likes": 42,
    "yt_comments": 5,
    "tiktok": "7708455576719691039",
-   "tt_views": 471,
+   "tt_views": 473,
    "tt_likes": 18
   },
   {
@@ -571,7 +571,7 @@
    "yt_likes": 13,
    "yt_comments": 1,
    "tiktok": "7708826559485889805",
-   "tt_views": 351,
+   "tt_views": 356,
    "tt_likes": 11
   },
   {
@@ -584,8 +584,8 @@
    "yt_likes": 9,
    "yt_comments": 1,
    "tiktok": "7709198006528134430",
-   "tt_views": 55,
-   "tt_likes": 0
+   "tt_views": 57,
+   "tt_likes": 1
   },
   {
    "name": "hill_day12",
@@ -593,12 +593,12 @@
    "posted": "2026-11-18 08:23",
    "youtube": "XY0722uOmxc",
    "privacy": "public",
-   "yt_views": 107,
-   "yt_likes": 2,
+   "yt_views": 170,
+   "yt_likes": 4,
    "yt_comments": 0,
    "tiktok": "7709526172635352350",
-   "tt_views": 136,
-   "tt_likes": 5
+   "tt_views": 258,
+   "tt_likes": 9
   }
  ]
 }
