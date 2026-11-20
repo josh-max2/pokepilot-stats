@@ -1,5 +1,5 @@
 {
- "at": "2026-11-20T15:40:01+00:00",
+ "at": "2026-11-20T16:40:01+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
@@ -34,7 +34,7 @@
    "yt_likes": 32,
    "yt_comments": 2,
    "tiktok": "7705462533607427341",
-   "tt_views": 4945,
+   "tt_views": 4947,
    "tt_likes": 84,
    "watch_min": 504,
    "avg_watch_s": 38,
@@ -72,7 +72,7 @@
    "yt_likes": 27,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 1659,
+   "tt_views": 1661,
    "tt_likes": 56,
    "watch_min": 465,
    "avg_watch_s": 40,
@@ -91,7 +91,7 @@
    "yt_likes": 41,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 9763,
+   "tt_views": 9764,
    "tt_likes": 135,
    "watch_min": 644,
    "avg_watch_s": 44,
@@ -129,7 +129,7 @@
    "yt_likes": 25,
    "yt_comments": 6,
    "tiktok": "7707317272096017678",
-   "tt_views": 2373,
+   "tt_views": 2374,
    "tt_likes": 43,
    "watch_min": 370,
    "avg_watch_s": 33,
@@ -206,7 +206,7 @@
    "yt_comments": 2,
    "tiktok": "7708806650769067294",
    "tt_views": 34700,
-   "tt_likes": 1224,
+   "tt_likes": 1226,
    "watch_min": 558,
    "avg_watch_s": 38,
    "avg_pct": 40.58,
@@ -224,7 +224,7 @@
    "yt_likes": 310,
    "yt_comments": 13,
    "tiktok": "7709174117118840078",
-   "tt_views": 2189,
+   "tt_views": 2190,
    "tt_likes": 32,
    "watch_min": 1740,
    "avg_watch_s": 89,
@@ -256,8 +256,8 @@
    "yt_likes": 29,
    "yt_comments": 3,
    "tiktok": "7709885134157270286",
-   "tt_views": 4144,
-   "tt_likes": 113
+   "tt_views": 4190,
+   "tt_likes": 114
   },
   {
    "name": "cup_f",
@@ -265,12 +265,12 @@
    "posted": "2026-11-20 07:53",
    "youtube": "XdWTDpLRsWQ",
    "privacy": "public",
-   "yt_views": 310,
-   "yt_likes": 12,
+   "yt_views": 542,
+   "yt_likes": 20,
    "yt_comments": 2,
    "tiktok": "7710260526835682573",
-   "tt_views": 149,
-   "tt_likes": 11
+   "tt_views": 415,
+   "tt_likes": 29
   },
   {
    "name": "quiz_d10",
@@ -487,8 +487,8 @@
    "posted": "2026-11-17 10:23",
    "youtube": "142MtUzYAA4",
    "privacy": "public",
-   "yt_views": 1502,
-   "yt_likes": 23,
+   "yt_views": 1503,
+   "yt_likes": 24,
    "yt_comments": 2,
    "tiktok": "7709187430854757645",
    "tt_views": 313,
@@ -538,7 +538,7 @@
    "posted": "2026-11-19 07:53",
    "youtube": "NCXo_weYgHA",
    "privacy": "public",
-   "yt_views": 1069,
+   "yt_views": 1099,
    "yt_likes": 9,
    "yt_comments": 1,
    "tiktok": "7709889809912696077",
@@ -551,12 +551,12 @@
    "posted": "2026-11-20 07:53",
    "youtube": "2S3eLwoBQR4",
    "privacy": "public",
-   "yt_views": 57,
-   "yt_likes": 1,
+   "yt_views": 223,
+   "yt_likes": 4,
    "yt_comments": 0,
    "tiktok": "7710261713848814862",
-   "tt_views": 108,
-   "tt_likes": 3
+   "tt_views": 320,
+   "tt_likes": 8
   },
   {
    "name": "hill_raids_ep5",
@@ -711,7 +711,7 @@
    "yt_likes": 3,
    "yt_comments": 0,
    "tiktok": "7709899011766897950",
-   "tt_views": 356,
+   "tt_views": 357,
    "tt_likes": 23
   },
   {
@@ -720,12 +720,12 @@
    "posted": "2026-11-20 08:23",
    "youtube": "cSwrK3mlnwQ",
    "privacy": "public",
-   "yt_views": 44,
-   "yt_likes": 0,
+   "yt_views": 138,
+   "yt_likes": 1,
    "yt_comments": 0,
    "tiktok": "7710267623333776671",
-   "tt_views": 34,
-   "tt_likes": 0
+   "tt_views": 99,
+   "tt_likes": 4
   }
  ]
 }
