@@ -1,9 +1,9 @@
 {
- "at": "2026-11-20T22:40:01+00:00",
+ "at": "2026-11-20T23:40:01+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
-   "subscribers": 72,
+   "subscribers": 73,
    "views": 31111,
    "videos": 14,
    "analytics": true
@@ -17,7 +17,7 @@
   },
   "hill": {
    "name": "GridIronCourt (Hill)",
-   "subscribers": 38,
+   "subscribers": 39,
    "views": 23383,
    "videos": 40,
    "analytics": false
@@ -68,11 +68,11 @@
    "posted": "2026-11-09 09:23",
    "youtube": "nV7Hl0EXTT4",
    "privacy": "public",
-   "yt_views": 1157,
+   "yt_views": 1158,
    "yt_likes": 27,
    "yt_comments": 0,
    "tiktok": "7706204715603741965",
-   "tt_views": 1666,
+   "tt_views": 1668,
    "tt_likes": 56,
    "watch_min": 469,
    "avg_watch_s": 40,
@@ -87,11 +87,11 @@
    "posted": "2026-11-10 09:23",
    "youtube": "nCknxUMZUVs",
    "privacy": "public",
-   "yt_views": 1621,
+   "yt_views": 1623,
    "yt_likes": 41,
    "yt_comments": 0,
    "tiktok": "7706578143615733006",
-   "tt_views": 9783,
+   "tt_views": 9787,
    "tt_likes": 135,
    "watch_min": 648,
    "avg_watch_s": 44,
@@ -129,7 +129,7 @@
    "yt_likes": 25,
    "yt_comments": 6,
    "tiktok": "7707317272096017678",
-   "tt_views": 2384,
+   "tt_views": 2387,
    "tt_likes": 43,
    "watch_min": 393,
    "avg_watch_s": 32,
@@ -144,11 +144,11 @@
    "posted": "2026-11-13 09:23",
    "youtube": "o2tTak3EXc8",
    "privacy": "public",
-   "yt_views": 1377,
+   "yt_views": 1379,
    "yt_likes": 17,
    "yt_comments": 2,
    "tiktok": "7707688873865825550",
-   "tt_views": 6069,
+   "tt_views": 6071,
    "tt_likes": 121,
    "watch_min": 574,
    "avg_watch_s": 38,
@@ -163,7 +163,7 @@
    "posted": "2026-11-14 09:23",
    "youtube": "1IWcUJJNkZk",
    "privacy": "public",
-   "yt_views": 1926,
+   "yt_views": 1927,
    "yt_likes": 48,
    "yt_comments": 2,
    "tiktok": "7708062421922974990",
@@ -182,7 +182,7 @@
    "posted": "2026-11-15 09:23",
    "youtube": "ioFpBtgM204",
    "privacy": "public",
-   "yt_views": 1816,
+   "yt_views": 1817,
    "yt_likes": 36,
    "yt_comments": 4,
    "tiktok": "7708432434290806030",
@@ -201,12 +201,12 @@
    "posted": "2026-11-16 09:53",
    "youtube": "RpcGzp4S5RE",
    "privacy": "public",
-   "yt_views": 1355,
+   "yt_views": 1359,
    "yt_likes": 44,
    "yt_comments": 2,
    "tiktok": "7708806650769067294",
    "tt_views": 35000,
-   "tt_likes": 1235,
+   "tt_likes": 1238,
    "watch_min": 591,
    "avg_watch_s": 38,
    "avg_pct": 40.61,
@@ -220,11 +220,11 @@
    "posted": "2026-11-17 09:23",
    "youtube": "5PEY86bshmM",
    "privacy": "public",
-   "yt_views": 14914,
-   "yt_likes": 317,
+   "yt_views": 14938,
+   "yt_likes": 320,
    "yt_comments": 14,
    "tiktok": "7709174117118840078",
-   "tt_views": 2218,
+   "tt_views": 2221,
    "tt_likes": 32,
    "watch_min": 13552,
    "avg_watch_s": 96,
@@ -258,12 +258,12 @@
    "posted": "2026-11-19 07:23",
    "youtube": "aFtuIIBrdHk",
    "privacy": "public",
-   "yt_views": 1499,
-   "yt_likes": 30,
+   "yt_views": 1515,
+   "yt_likes": 31,
    "yt_comments": 3,
    "tiktok": "7709885134157270286",
-   "tt_views": 4353,
-   "tt_likes": 116
+   "tt_views": 4374,
+   "tt_likes": 118
   },
   {
    "name": "cup_f",
@@ -271,12 +271,12 @@
    "posted": "2026-11-20 07:53",
    "youtube": "XdWTDpLRsWQ",
    "privacy": "public",
-   "yt_views": 1362,
-   "yt_likes": 47,
+   "yt_views": 1468,
+   "yt_likes": 49,
    "yt_comments": 5,
    "tiktok": "7710260526835682573",
-   "tt_views": 6612,
-   "tt_likes": 123
+   "tt_views": 7160,
+   "tt_likes": 134
   },
   {
    "name": "quiz_d10",
@@ -512,7 +512,7 @@
    "posted": "2026-11-17 15:23",
    "youtube": "T-IArKjI_ns",
    "privacy": "public",
-   "yt_views": 1292,
+   "yt_views": 1296,
    "yt_likes": 22,
    "yt_comments": 0,
    "tiktok": "7709266809265900813",
@@ -567,7 +567,7 @@
    "yt_likes": 23,
    "yt_comments": 1,
    "tiktok": "7710261713848814862",
-   "tt_views": 1010,
+   "tt_views": 1039,
    "tt_likes": 23
   },
   {
@@ -697,7 +697,7 @@
    "yt_likes": 14,
    "yt_comments": 1,
    "tiktok": "7709198006528134430",
-   "tt_views": 60,
+   "tt_views": 61,
    "tt_likes": 1
   },
   {
@@ -706,11 +706,11 @@
    "posted": "2026-11-18 08:23",
    "youtube": "XY0722uOmxc",
    "privacy": "public",
-   "yt_views": 783,
+   "yt_views": 787,
    "yt_likes": 21,
    "yt_comments": 0,
    "tiktok": "7709526172635352350",
-   "tt_views": 399,
+   "tt_views": 401,
    "tt_likes": 14
   },
   {
@@ -723,7 +723,7 @@
    "yt_likes": 4,
    "yt_comments": 0,
    "tiktok": "7709899011766897950",
-   "tt_views": 362,
+   "tt_views": 363,
    "tt_likes": 23
   },
   {
@@ -736,8 +736,8 @@
    "yt_likes": 3,
    "yt_comments": 0,
    "tiktok": "7710267623333776671",
-   "tt_views": 197,
-   "tt_likes": 9
+   "tt_views": 216,
+   "tt_likes": 11
   }
  ]
 }
