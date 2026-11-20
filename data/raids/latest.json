@@ -1,7 +1,11 @@
 {
- "updated": "2026-11-19T23:05:13+00:00",
+ "updated": "2026-11-20T00:05:14+00:00",
  "handle": "pokepilot.raids",
- "account": null,
+ "account": {
+  "followers": 24,
+  "likes": 765,
+  "videos": 26
+ },
  "videos": [
   {
    "id": "7709889809912696077",
@@ -28,7 +32,7 @@
    "url": "https://www.tiktok.com/@pokepilot.raids/video/7709266809265900813",
    "posted": "2026-11-17T22:13:06+00:00",
    "caption": "which team wins #5 ? ⚔️ Fire starters vs Water starters: Charizard / Blaziken / Infernape vs Blastoise / Swampert / Greninja. follow + comment fire or water before the fight 👇 #pokemon #pokemonbattle #pokemonquiz #pokemoncommunity #pokemonsimulator",
-   "views": 491,
+   "views": 494,
    "likes": 18,
    "comments": 2,
    "shares": 0
@@ -168,7 +172,7 @@
    "url": "https://www.tiktok.com/@pokepilot.raids/video/7705838809266638094",
    "posted": "2026-11-08T16:31:14+00:00",
    "caption": "4 starter pokémon 🃏 how many can you get? 2 easy, 1 hard, 1 impossible. follow + comment your score /4 #pokemon #pokemontcg #guessthepokemon #pokemonquiz #pokemonart",
-   "views": 843,
+   "views": 844,
    "likes": 21,
    "comments": 2,
    "shares": 0
