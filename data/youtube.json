@@ -1,5 +1,5 @@
 {
- "at": "2026-11-25T05:40:01+00:00",
+ "at": "2026-11-25T06:40:02+00:00",
  "channels": {
   "pokepilot2": {
    "name": "Battle Sim",
@@ -18,7 +18,7 @@
   "hill": {
    "name": "GridIronCourt (Hill)",
    "subscribers": 51,
-   "views": 27759,
+   "views": 28490,
    "videos": 44,
    "analytics": false
   }
@@ -334,8 +334,8 @@
    "posted": "2026-11-23 11:23",
    "youtube": "CS5SEj1RQgE",
    "privacy": "public",
-   "yt_views": 1317,
-   "yt_likes": 23,
+   "yt_views": 1329,
+   "yt_likes": 24,
    "yt_comments": 0,
    "tiktok": "7711426751754243342",
    "tt_views": 132,
